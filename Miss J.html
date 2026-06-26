@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail by Miss J | Luxury Beauty Studio</title>
+    <style>
+        /* Modern Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #161616 0%, #0a0a0a 100%);
+            color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Premium Header Styling */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(232, 176, 75, 0.15);
+            padding: 15px 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        nav h1 {
+            color: #e8b04b;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(232, 176, 75, 0.2);
+        }
+
+        /* Responsive Mobile Menu Layout */
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            list-style: none;
+            position: absolute;
+            top: 55px;
+            left: -20px;
+            right: -20px;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 20px;
+            border-bottom: 1px solid rgba(232, 176, 75, 0.15);
+            text-align: center;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Class active called via JavaScript */
+        ul.mobile-open {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 10px 0;
+        }
+
+        a:hover {
+            color: #e8b04b;
+        }
+
+        /* 3-Line Hamburger Button Styling */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 2px;
+            background-color: #e8b04b;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Morphing lines into an 'X' shape when active */
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Hero Section Upgrades */
+        .hero {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 140px 20px 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero img {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 24px;
+            border: 1px solid rgba(232, 176, 75, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(232, 176, 75, 0.1);
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h2 {
+            font-size: 36px;
+            color: #e8b04b;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: #b3b3b3;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Elegant Buttons */
+        .btn {
+            background: linear-gradient(135deg, #e8b04b 0%, #c99333 100%);
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(232, 176, 75, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(232, 176, 75, 0.35);
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Section Layout Enhancements */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #e8b04b;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: #e8b04b;
+            margin: 15px auto 0 auto;
+            opacity: 0.6;
+        }
+
+        /* Cards / Services Design */
+        .cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .card {
+            background: #141414;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 340px;
+            border-radius: 20px;
+            border: 1px solid rgba(232, 176, 75, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .card h3 {
+            color: #e8b04b;
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(232, 176, 75, 0.6);
+            box-shadow: 0 15px 35px rgba(232, 176, 75, 0.15);
+        }
+
+        /* Modern Gallery Layout */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 1px solid rgba(232, 176, 75, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        /* About Us Clean Text */
+        #about p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 16px;
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        /* Luxury Booking Section */
+        .booking-container {
+            background: #141414;
+            padding: 25px 20px;
+            border-radius: 24px;
+            border: 1px solid rgba(232, 176, 75, 0.25);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #e8b04b;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(232, 176, 75, 0.3);
+            background: #0d0d0d;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #e8b04b;
+            box-shadow: 0 0 10px rgba(232, 176, 75, 0.2);
+        }
+
+        /* Date & Time Icon Alignment */
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(74%) sepia(51%) saturate(544%) hue-rotate(346deg) brightness(97%) contrast(90%);
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        /* Checkboxes styling Customisation */
+        .services-checkboxes {
+            background: #0d0d0d;
+            padding: 15px;
+            border-radius: 14px;
+            border: 1px solid rgba(232, 176, 75, 0.2);
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .checkbox-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .checkbox-item label {
+            margin-bottom: 0;
+            font-weight: normal;
+            color: #e0e0e0;
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 15px;
+            cursor: pointer;
+            padding-right: 10px;
+        }
+
+        .checkbox-item input {
+            width: auto;
+            transform: scale(1.2);
+            cursor: pointer;
+            accent-color: #e8b04b;
+        }
+
+        /* Sum Indicator Layout */
+        .price-summary {
+            font-size: 20px;
+            font-weight: 600;
+            color: #e8b04b;
+            text-align: center;
+            margin: 25px 0 20px 0;
+            padding: 15px;
+            background: rgba(232, 176, 75, 0.05);
+            border-radius: 12px;
+            border: 1px dashed rgba(232, 176, 75, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .booking-container .btn {
+            max-width: 100%;
+        }
+
+        /* Contact Box Formatting */
+        .contact-box {
+            background: #141414;
+            padding: 30px 20px;
+            border-radius: 24px;
+            display: block;
+            max-width: 450px;
+            margin: 0 auto;
+            border: 1px solid rgba(232, 176, 75, 0.2);
+            text-align: left;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .contact-box p {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #cccccc;
+            line-height: 1.4;
+        }
+
+        .contact-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Footer Elements */
+        footer {
+            background: #050505;
+            padding: 25px;
+            text-align: center;
+            color: #8c8c8c;
+            font-size: 12px;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(232, 176, 75, 0.1);
+        }
+
+        /* Media Query for Medium Screens & Desktops */
+        @media(min-width: 768px) {
+            header {
+                padding: 20px 40px;
+            }
+
+            nav h1 {
+                font-size: 28px;
+            }
+
+            /* Hide the 3 line button on large screens */
+            .menu-toggle {
+                display: none;
+            }
+
+            /* Normal static layout rules for wide viewports */
+            ul {
+                display: flex;
+                flex-direction: row;
+                gap: 35px;
+                position: static;
+                padding: 0;
+                background: transparent;
+                border-bottom: none;
+                max-height: none;
+                opacity: 1;
+                overflow: visible;
+                width: auto;
+            }
+
+            a {
+                font-size: 14px;
+                padding: 0;
+            }
+
+            .hero {
+                flex-direction: row;
+                padding: 180px 40px 100px 40px;
+                gap: 60px;
+                text-align: left;
+            }
+
+            .hero img {
+                max-width: 450px;
+            }
+
+            .hero-text h2 {
+                font-size: 56px;
+                line-height: 1.1;
+            }
+
+            .hero-text p {
+                font-size: 18px;
+            }
+
+            .btn {
+                width: auto;
+            }
+
+            section {
+                padding: 100px 40px;
+            }
+
+            section h2 {
+                font-size: 38px;
+            }
+
+            .cards {
+                flex-direction: row;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .card {
+                width: 280px;
+            }
+
+            .gallery {
+                flex-direction: row;
+                justify-content: center;
+                gap: 25px;
+            }
+
+            .gallery img {
+                width: 320px;
+            }
+
+            #about p {
+                font-size: 18px;
+            }
+
+            .booking-container {
+                padding: 50px;
+            }
+
+            .contact-box {
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h1>Nail by Miss J</h1>
+            
+            <!-- Three Line Interactive Button -->
+            <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul id="navMenu">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+                <li><a href="#booking" onclick="closeMenu()">Book Now</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h2>Luxury Beauty Experience</h2>
+            <p>Indulge in professional nail designs, luxury makeup artwork, and premium eyelash enhancements custom-tailored for your style.</p>
+            <a href="#booking" class="btn">Book Appointment</a>
+        </div>
+        <img src="Juliana.png" alt="Featured Nail Art">
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Nail Art</h3>
+                <p>Beautiful customized nail designs, overlays, extensions, and master nail care.</p>
+            </div>
+            <div class="card">
+                <h3>Make-up</h3>
+                <p>High-definition professional makeup applications for any luxury special event.</p>
+            </div>
+            <div class="card">
+                <h3>Eyelashes</h3>
+                <p>Premium lightweight eyelash extensions crafted for natural depth and comfort.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Beauty Gallery</h2>
+        <div class="gallery">
+            <img src="34703b71d48a365f8448f843dfb75329.jpg" alt="Gallery Nail Style 1">
+            <img src="565FBD63-25AF-49FE-B2C5-8650B5B3117D.jpeg" alt="Gallery Nail Style 2">
+            <img src="wp3439245.jpg" alt="Gallery Nail Style 3">
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Our Studio</h2>
+        <p>
+            At Nail by Miss J, we specialize in luxury aesthetic services curated to empower your beauty. From bespoke nail extensions to signature cosmetics styling, premium eyelashes, and elite custom hair unit styling, we focus on perfection down to every single detail.
+        </p>
+    </section>
+
+    <section id="booking">
+        <h2>Schedule Your Visit</h2>
+        <div class="booking-container">
+            <form id="whatsappForm" onsubmit="sendBooking(event)">
+                <div class="form-group">
+                    <label for="clientName">Your Full Name</label>
+                    <input type="text" id="clientName" required placeholder="Enter your first and last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="bookingDate">Select Appointment Date</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookingTime">Select Preferred Time</label>
+                    <input type="time" id="bookingTime" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Services</label>
+                    <div class="services-checkboxes">
+                        <div class="checkbox-item">
+                            <label for="srv_nails">Bespoke Nail Art & Extensions</label>
+                            <input type="checkbox" id="srv_nails" value="Nail Art" data-price="250" onchange="calculateTotal()">
+                        </div>
+                        <div class="checkbox-item">
+                            <label for="srv_makeup">Signature Event Make-up</label>
+                            <input type="checkbox" id="srv_makeup" value="Makeup" data-price="450" onchange="calculateTotal()">
+                        </div>
+                        <div class="checkbox-item">
+                            <label for="srv_lashes">Premium Eyelash Set</label>
+                            <input type="checkbox" id="srv_lashes" value="Eyelashes" data-price="180" onchange="calculateTotal()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-summary">
+                    Estimated Price: R<span id="totalPrice">0</span>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;">Request Appointment via WhatsApp 💬</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact & Locations</h2>
+        <div class="contact-box">
+            <p>📞 <strong>Phone:</strong> +27 64 082 1906</p>
+            <p>📍 <strong>Address:</strong> 270 Paul Kruger Street, Pretoria Central</p>
+            <p>🗓️ <strong>Weekdays:</strong> Monday - Friday Availability</p>
+            <p>👑 <strong>Weekends:</strong> Saturday & Sunday via Appointment Only</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Nail by Miss J Beauty Studio. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Responsive Menu Operations
+        function toggleMenu() {
+            document.getElementById('menuToggle').classList.toggle('open');
+            document.getElementById('navMenu').classList.toggle('mobile-open');
+        }
+
+        function closeMenu() {
+            document.getElementById('menuToggle').classList.remove('open');
+            document.getElementById('navMenu').classList.remove('mobile-open');
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            const checkboxes = document.querySelectorAll('.services-checkboxes input[type="checkbox"]');
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    total += parseInt(checkbox.getAttribute('data-price'));
+                }
+            });
+            
+            document.getElementById('totalPrice').innerText = total;
+        }
+
+        function sendBooking(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('clientName').value;
+            const date = document.getElementById('bookingDate').value;
+            const time = document.getElementById('bookingTime').value;
+            const totalEstimated = document.getElementById('totalPrice').innerText;
+            
+            let selectedServices = [];
+            const checkboxes = document.querySelectorAll('.services-checkboxes input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedServices.push(checkbox.value);
+                }
+            });
+
+            if (selectedServices.length === 0) {
+                alert("Please select at least one beauty service to initiate your booking request.");
+                return;
+            }
+
+            const phoneNumber = "27640821906"; 
+            const message = `Hello Miss J! 💅%0A%0AI would like to request an appointment at your studio.%0A%0A*Client Profile:*%0A👤 *Name:* ${name}%0A%0A*Schedule Slot:*%0A📅 *Date:* ${date}%0A🕒 *Time:* ${time}%0A%0A*Selected Services:*%0A✨ ${selectedServices.join(', ')}%0A%0A*Estimated Invoice:*%0A💵 R${totalEstimated}%0A%0APlease let me know if this reservation is open!`;
+
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
