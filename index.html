@@ -413,6 +413,58 @@
             text-align: justify;
         }
 
+        /* Studio Policies Styling */
+        .policy-box {
+            background: #ffffff;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-left: 4px solid #d4af37;
+            padding: 25px 30px;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+        }
+
+        .policy-box h3 {
+            color: #1a1a1a;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .policy-box p {
+            color: #4a4a4a;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .policy-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-box ul {
+            position: static;
+            display: block;
+            background: none;
+            box-shadow: none;
+            border: none;
+            padding: 0 0 0 18px;
+            max-height: none;
+            opacity: 1;
+            text-align: left;
+            margin-bottom: 12px;
+            list-style: disc;
+        }
+
+        .policy-box ul li {
+            color: #4a4a4a;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
         /* Luxury Booking Section */
         .booking-container {
             background: #ffffff;
@@ -744,6 +796,21 @@
 
     <section id="booking">
         <h2>Schedule Your Visit</h2>
+        
+        <!-- Studio Policies Block -->
+        <div class="policy-box">
+            <h3>NB: Important Studio Policies</h3>
+            <p>A 50% deposit via Ozow Instant EFT or direct bank transfer is required to confirm your booking.</p>
+            <p><strong>Direct EFT Details (Manual Transfer):</strong></p>
+            <ul>
+                <li><strong>Account Holder:</strong> Julienne Aimee</li>
+                <li><strong>Bank:</strong> FNB</li>
+                <li><strong>Account Number:</strong> 63156087223</li>
+            </ul>
+            <p>Please respect our schedule and arrive 5 minutes early prior to your scheduled time (e.g., if booked for 12:00, please arrive by 11:55).</p>
+            <p>In the event that you are running late or need to cancel, please notify us in advance via WhatsApp.</p>
+        </div>
+
         <div class="booking-container">
             <form id="whatsappForm" onsubmit="sendBooking(event)">
                 <div class="form-group">
