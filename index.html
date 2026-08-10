@@ -1,959 +1,938 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nail by Miss J | Luxury Beauty Studio</title>
-    <style>
-        /* Modern Reset & Luxury Typography */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #faf6f0; /* Soft luxury cream background from Theme 1 */
-            color: #2c2c2c; /* Deep charcoal for elegant contrast */
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Fixed Premium Header Styling */
-        header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 20px 8%;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        nav h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #1a1a1a;
-            text-transform: uppercase;
-        }
-
-        /* Responsive Mobile Menu Layout */
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Nail by Miss J | Luxury Beauty Studio</title> <style> /* Modern Reset & Luxury Typography */ * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        background-color: #faf6f0; /* Soft luxury cream background from Theme 1 */
+        color: #2c2c2c; /* Deep charcoal for elegant contrast */
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+    /* Fixed Premium Header Styling */
+    header {
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 20px 8%;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+    nav h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: #1a1a1a;
+        text-transform: uppercase;
+    }
+    /* Responsive Mobile Menu Layout */
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        list-style: none;
+        position: absolute;
+        top: 60px;
+        left: -20px;
+        right: -20px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        text-align: center;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease-in-out;
+    }
+    ul.mobile-open {
+        max-height: 300px;
+        opacity: 1;
+    }
+    a {
+        color: #555;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+        display: block;
+        padding: 10px 0;
+    }
+    a:hover {
+        color: #d4af37; /* Subtle gold accent */
+    }
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 25px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    .menu-toggle span {
+        width: 100%;
+        height: 2px;
+        background-color: #1a1a1a;
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+    }
+    .menu-toggle.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    /* Hero Split Section Container */
+    .hero {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        padding: 140px 8% 60px 8%;
+        max-width: 1400px;
+        margin: 0 auto;
+        min-height: 90vh;
+    }
+    .hero img {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 4px; /* Classic sharp luxury border style */
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+    .hero-text {
+        max-width: 550px;
+        text-align: center;
+    }
+    .hero-text h2 {
+        font-size: 2.8rem;
+        color: #1a1a1a;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        font-weight: 400;
+    }
+    .hero-text p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+        letter-spacing: 0.5px;
+    }
+    /* Elegant Luxury Buttons */
+    .btn {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        padding: 14px 32px;
+        font-weight: 600;
+        display: inline-block;
+        cursor: pointer;
+        border: none;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        text-align: center;
+        width: 100%;
+        max-width: 280px;
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+        background-color: #d4af37;
+        color: #ffffff;
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.15);
+    }
+    /* Section Layouts */
+    section {
+        padding: 80px 8%;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    section h2 {
+        color: #1a1a1a;
+        font-size: 2.2rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    section h2::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 2px;
+        background: #d4af37;
+        margin: 15px auto 0 auto;
+    }
+    /* Cards / Services Design */
+    .cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+    .card {
+        background: #ffffff;
+        padding: 40px 30px;
+        width: 100%;
+        max-width: 360px;
+        border-radius: 0px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .card h3 {
+        color: #1a1a1a;
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+    .card p {
+        color: #666;
+        font-size: 0.95rem;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(212, 175, 55, 0.5);
+        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.05);
+    }
+    /* Custom Category Sub-Galleries */
+    .gallery-category-title {
+        color: #1a1a1a;
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 50px 0 25px 0;
+        text-align: center;
+        width: 100%;
+    }
+    /* Auto-moving + Draggable Marquee Container */
+    .marquee-container {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-bottom: 30px;
+        padding: 10px 0;
+        cursor: grab;
+        scrollbar-width: thin;
+        scrollbar-color: #d4af37 #faf6f0;
+        -webkit-overflow-scrolling: touch;
+    }
+    .marquee-container:active {
+        cursor: grabbing;
+    }
+    .marquee-container::-webkit-scrollbar {
+        height: 6px;
+    }
+    .marquee-container::-webkit-scrollbar-track {
+        background: #faf6f0;
+    }
+    .marquee-container::-webkit-scrollbar-thumb {
+        background-color: #d4af37;
+        border-radius: 3px;
+    }
+    .marquee-track {
+        display: flex;
+        width: max-content;
+        gap: 20px;
+        animation: scrollRightToLeft 45s linear infinite;
+    }
+    .marquee-container:nth-of-type(2) .marquee-track {
+        animation-duration: 50s;
+    }
+    .marquee-container:hover .marquee-track,
+    .marquee-container.dragging .marquee-track {
+        animation-play-state: paused;
+    }
+    .marquee-track img {
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        flex-shrink: 0;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+    .marquee-track img:hover {
+        transform: scale(1.03);
+        border-color: #d4af37;
+    }
+    @keyframes scrollRightToLeft {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    /* Lightbox Preview Modal Box Style */
+    .lightbox-modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 254, 252, 0.98);
+        backdrop-filter: blur(5px);
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+    .lightbox-modal.show {
+        display: flex;
+        opacity: 1;
+    }
+    .lightbox-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 90%;
+        width: 400px;
+        position: relative;
+    }
+    .lightbox-content img {
+        width: 100%;
+        height: auto;
+        max-height: 65vh;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid #d4af37;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: -45px;
+        right: 0;
+        color: #1a1a1a;
+        font-size: 35px;
+        font-weight: 300;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    .lightbox-close:hover {
+        color: #d4af37;
+    }
+    /* Static Layout fallback for standard grids */
+    .gallery-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .gallery-grid img {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+        cursor: pointer;
+    }
+    /* About Us Clean Text */
+    #about p {
+        max-width: 750px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        color: #4a4a4a;
+        line-height: 1.8;
+        text-align: justify;
+    }
+    /* Studio Policies Styling */
+    .policy-box {
+        background: #ffffff;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-left: 4px solid #d4af37;
+        padding: 25px 30px;
+        max-width: 650px;
+        margin: 0 auto 30px auto;
+        text-align: left;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    }
+    .policy-box h3 {
+        color: #1a1a1a;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    .policy-box p {
+        color: #4a4a4a;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+        line-height: 1.6;
+    }
+    .policy-box p:last-child {
+        margin-bottom: 0;
+    }
+    .policy-box ul {
+        position: static;
+        display: block;
+        background: none;
+        box-shadow: none;
+        border: none;
+        padding: 0 0 0 18px;
+        max-height: none;
+        opacity: 1;
+        text-align: left;
+        margin-bottom: 12px;
+        list-style: disc;
+    }
+    .policy-box ul li {
+        color: #4a4a4a;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+    /* Luxury Booking Section */
+    .booking-container {
+        background: #ffffff;
+        padding: 35px 24px;
+        border-radius: 0px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto;
+        text-align: left;
+    }
+    .form-group {
+        margin-bottom: 24px;
+    }
+    .form-group label {
+        display: block;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 14px;
+        border-radius: 0px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background: #fafafa;
+        color: #2c2c2c;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+    .form-group input:focus, .form-group select:focus {
+        border-color: #d4af37;
+        background: #ffffff;
+        box-shadow: 0 0 8px rgba(212, 175, 55, 0.15);
+    }
+    .services-checkboxes {
+        background: #fafafa;
+        padding: 20px;
+        border-radius: 0px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .service-row-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .service-row-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    .checkbox-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .service-row-item label {
+        margin-bottom: 0;
+        font-weight: normal;
+        color: #444;
+        text-transform: none;
+        letter-spacing: 0;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .service-row-item input[type="checkbox"] {
+        width: auto;
+        transform: scale(1.2);
+        cursor: pointer;
+        accent-color: #d4af37;
+    }
+    .service-select {
+        margin-top: 5px;
+        font-size: 14px !important;
+        padding: 8px 10px !important;
+        border-color: rgba(212, 175, 55, 0.15) !important;
+    }
+    .price-summary {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        text-align: center;
+        margin: 30px 0 20px 0;
+        padding: 15px;
+        background: #f4eae1;
+        border-radius: 0px;
+        border: 1px dashed #d4af37;
+        letter-spacing: 0.5px;
+    }
+    .booking-container .btn {
+        max-width: 100%;
+    }
+    /* Combined Contact Layout & Google Maps Panel */
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+        align-items: center;
+    }
+    .contact-box {
+        background: #ffffff;
+        padding: 40px 30px;
+        border-radius: 0px;
+        width: 100%;
+        max-width: 480px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        text-align: left;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    }
+    .contact-box p {
+        margin-bottom: 15px;
+        font-size: 15px;
+        color: #555;
+        line-height: 1.5;
+    }
+    .map-wrapper {
+        width: 100%;
+        max-width: 480px;
+        height: 320px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .map-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+    footer {
+        background: #1a1a1a;
+        padding: 30px;
+        text-align: center;
+        color: #a0a0a0;
+        font-size: 12px;
+        letter-spacing: 1px;
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    /* Desktop Media Upgrades */
+    @media(min-width: 768px) {
+        header { padding: 20px 8%; }
+        .menu-toggle { display: none; }
         ul {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            list-style: none;
-            position: absolute;
-            top: 60px;
-            left: -20px;
-            right: -20px;
-            background-color: #ffffff;
-            padding: 20px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-align: center;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 0.4s ease-in-out;
-        }
-
-        ul.mobile-open {
-            max-height: 300px;
-            opacity: 1;
-        }
-
-        a {
-            color: #555;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-            display: block;
-            padding: 10px 0;
-        }
-
-        a:hover {
-            color: #d4af37; /* Subtle gold accent */
-        }
-
-        .menu-toggle {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 25px;
-            height: 18px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .menu-toggle span {
-            width: 100%;
-            height: 2px;
-            background-color: #1a1a1a;
-            border-radius: 2px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .menu-toggle.open span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .menu-toggle.open span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.open span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        /* Hero Split Section Container */
-        .hero {
-            display: flex;
-            flex-direction: column-reverse;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            padding: 140px 8% 60px 8%;
-            max-width: 1400px;
-            margin: 0 auto;
-            min-height: 90vh;
-        }
-
-        .hero img {
-            width: 100%;
-            max-width: 420px;
-            height: auto;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 4px; /* Classic sharp luxury border style */
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-        }
-
-        .hero-text {
-            max-width: 550px;
-            text-align: center;
-        }
-
-        .hero-text h2 {
-            font-size: 2.8rem;
-            color: #1a1a1a;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 30px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Elegant Luxury Buttons */
-        .btn {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            padding: 14px 32px;
-            font-weight: 600;
-            display: inline-block;
-            cursor: pointer;
-            border: none;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            text-align: center;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            background-color: #d4af37;
-            color: #ffffff;
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.15);
-        }
-
-        /* Section Layouts */
-        section {
-            padding: 80px 8%;
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        section h2 {
-            color: #1a1a1a;
-            font-size: 2.2rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        section h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background: #d4af37;
-            margin: 15px auto 0 auto;
-        }
-
-        /* Cards / Services Design */
-        .cards {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .card {
-            background: #ffffff;
-            padding: 40px 30px;
-            width: 100%;
-            max-width: 360px;
-            border-radius: 0px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .card h3 {
-            color: #1a1a1a;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .card p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.5);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.05);
-        }
-
-        /* Custom Category Sub-Galleries */
-        .gallery-category-title {
-            color: #1a1a1a;
-            font-size: 1.5rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 50px 0 25px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* Continuous Infinite Moving Ticker Styles */
-        .marquee-container {
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            overflow: hidden;
-            margin-bottom: 30px;
-            padding: 10px 0;
-        }
-
-        .marquee-track {
-            display: flex;
-            width: max-content;
-            gap: 20px;
-            animation: scrollRightToLeft 45s linear infinite;
-        }
-
-        .marquee-container:nth-of-type(2) .marquee-track {
-            animation-duration: 50s;
-        }
-
-        .marquee-container:hover .marquee-track {
-            animation-play-state: paused;
-        }
-
-        .marquee-track img {
-            width: 240px;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-
-        .marquee-track img:hover {
-            transform: scale(1.03);
-            border-color: #d4af37;
-        }
-
-        @keyframes scrollRightToLeft {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Lightbox Preview Modal Box Style */
-        .lightbox-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 254, 252, 0.98);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .lightbox-modal.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .lightbox-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            max-width: 90%;
-            width: 400px;
-            position: relative;
-        }
-
-        .lightbox-content img {
-            width: 100%;
-            height: auto;
-            max-height: 65vh;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid #d4af37;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -45px;
-            right: 0;
-            color: #1a1a1a;
-            font-size: 35px;
-            font-weight: 300;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .lightbox-close:hover {
-            color: #d4af37;
-        }
-
-        /* Static Layout fallback for standard grids */
-        .gallery-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-            width: 100%;
-            margin-bottom: 30px;
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            max-width: 340px;
-            height: auto;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-            cursor: pointer;
-        }
-
-        /* About Us Clean Text */
-        #about p {
-            max-width: 750px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: #4a4a4a;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        /* Studio Policies Styling */
-        .policy-box {
-            background: #ffffff;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            border-left: 4px solid #d4af37;
-            padding: 25px 30px;
-            max-width: 650px;
-            margin: 0 auto 30px auto;
-            text-align: left;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
-        }
-
-        .policy-box h3 {
-            color: #1a1a1a;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .policy-box p {
-            color: #4a4a4a;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        .policy-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .policy-box ul {
+            flex-direction: row;
+            gap: 30px;
             position: static;
-            display: block;
-            background: none;
-            box-shadow: none;
-            border: none;
-            padding: 0 0 0 18px;
+            padding: 0;
+            background: transparent;
+            border-bottom: none;
             max-height: none;
             opacity: 1;
-            text-align: left;
-            margin-bottom: 12px;
-            list-style: disc;
-        }
-
-        .policy-box ul li {
-            color: #4a4a4a;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-
-        /* Luxury Booking Section */
-        .booking-container {
-            background: #ffffff;
-            padding: 35px 24px;
-            border-radius: 0px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
-            width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 14px;
-            border-radius: 0px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background: #fafafa;
-            color: #2c2c2c;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            border-color: #d4af37;
-            background: #ffffff;
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.15);
-        }
-
-        .services-checkboxes {
-            background: #fafafa;
-            padding: 20px;
-            border-radius: 0px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .service-row-item {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .service-row-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .checkbox-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .service-row-item label {
-            margin-bottom: 0;
-            font-weight: normal;
-            color: #444;
-            text-transform: none;
-            letter-spacing: 0;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        .service-row-item input[type="checkbox"] {
+            overflow: visible;
             width: auto;
-            transform: scale(1.2);
-            cursor: pointer;
-            accent-color: #d4af37;
+            box-shadow: none;
         }
-
-        .service-select {
-            margin-top: 5px;
-            font-size: 14px !important;
-            padding: 8px 10px !important;
-            border-color: rgba(212, 175, 55, 0.15) !important;
-        }
-
-        .price-summary {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            text-align: center;
-            margin: 30px 0 20px 0;
-            padding: 15px;
-            background: #f4eae1;
-            border-radius: 0px;
-            border: 1px dashed #d4af37;
-            letter-spacing: 0.5px;
-        }
-
-        .booking-container .btn {
-            max-width: 100%;
-        }
-
-        /* Combined Contact Layout & Google Maps Panel */
-        .contact-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-            align-items: center;
-        }
-
-        .contact-box {
-            background: #ffffff;
-            padding: 40px 30px;
-            border-radius: 0px;
-            width: 100%;
-            max-width: 480px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+        a { font-size: 0.95rem; padding: 0; }
+        .hero {
+            flex-direction: row;
+            padding: 180px 8% 100px 8%;
+            gap: 80px;
             text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
-
-        .contact-box p {
-            margin-bottom: 15px;
-            font-size: 15px;
-            color: #555;
-            line-height: 1.5;
-        }
-
-        .map-wrapper {
-            width: 100%;
-            max-width: 480px;
-            height: 320px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
-
-        .map-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        footer {
-            background: #1a1a1a;
-            padding: 30px;
-            text-align: center;
-            color: #a0a0a0;
-            font-size: 12px;
-            letter-spacing: 1px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        /* Desktop Media Upgrades */
-        @media(min-width: 768px) {
-            header { padding: 20px 8%; }
-            .menu-toggle { display: none; }
-            ul {
-                display: flex;
-                flex-direction: row;
-                gap: 30px;
-                position: static;
-                padding: 0;
-                background: transparent;
-                border-bottom: none;
-                max-height: none;
-                opacity: 1;
-                overflow: visible;
-                width: auto;
-                box-shadow: none;
-            }
-            a { font-size: 0.95rem; padding: 0; }
-            .hero {
-                flex-direction: row;
-                padding: 180px 8% 100px 8%;
-                gap: 80px;
-                text-align: left;
-            }
-            .hero-text { text-align: left; }
-            .hero img { max-width: 460px; }
-            .hero-text h2 { font-size: 3.5rem; line-height: 1.2; }
-            section { padding: 100px 8%; }
-            section h2 { font-size: 2.5rem; }
-            .cards { flex-direction: row; justify-content: center; gap: 30px; }
-            .card { width: 340px; }
-            .gallery-grid { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 25px; }
-            .gallery-grid img { width: 260px; }
-            .booking-container { padding: 50px; }
-            .contact-container { flex-direction: row; justify-content: center; align-items: stretch; }
-            .contact-box, .map-wrapper { max-width: 480px; width: 50%; }
-        }
-    </style>
+        .hero-text { text-align: left; }
+        .hero img { max-width: 460px; }
+        .hero-text h2 { font-size: 3.5rem; line-height: 1.2; }
+        section { padding: 100px 8%; }
+        section h2 { font-size: 2.5rem; }
+        .cards { flex-direction: row; justify-content: center; gap: 30px; }
+        .card { width: 340px; }
+        .gallery-grid { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .gallery-grid img { width: 260px; }
+        .booking-container { padding: 50px; }
+        .contact-container { flex-direction: row; justify-content: center; align-items: stretch; }
+        .contact-box, .map-wrapper { max-width: 480px; width: 50%; }
+    }
+</style>
 </head>
-
 <body>
-
-    <header>
-        <nav>
-            <h1>Nail by Miss J</h1>
-            <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul id="navMenu">
-                <li><a href="#home" onclick="closeMenu()">Home</a></li>
-                <li><a href="#about" onclick="closeMenu()">About</a></li>
-                <li><a href="#services" onclick="closeMenu()">Services</a></li>
-                <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
-                <li><a href="#booking" onclick="closeMenu()">Book Now</a></li>
-                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h2>Luxury Beauty Experience</h2>
-            <p>Indulge in professional nail designs and structural acrylic extensions custom-tailored for your style.</p>
-            <a href="#booking" class="btn">Book Appointment</a>
+<header>
+    <nav>
+        <h1>Nail by Miss J</h1>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="#home" onclick="closeMenu()">Home</a></li>
+            <li><a href="#about" onclick="closeMenu()">About</a></li>
+            <li><a href="#services" onclick="closeMenu()">Services</a></li>
+            <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+            <li><a href="#booking" onclick="closeMenu()">Book Now</a></li>
+            <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="home" class="hero">
+    <div class="hero-text">
+        <h2>Luxury Beauty Experience</h2>
+        <p>Indulge in professional nail designs and structural acrylic extensions custom-tailored for your style.</p>
+        <a href="#booking" class="btn">Book Appointment</a>
+    </div>
+</section>
+<section id="about">
+    <h2>About Our Studio</h2>
+    <p>
+        At Nail by Miss J, we specialize in luxury aesthetic services curated to empower your beauty. We are proud nail instructors, nail tutors, and beauty mentors dedicated to precision, artistry, and exceptional salon training. From bespoke nail extensions to signature overlays, we focus on perfection down to every single detail.
+    </p>
+</section>
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Nail Art</h3>
+            <p>Beautiful customized nail designs, overlays, and comprehensive master mentoring solutions.</p>
         </div>
-   
-    </section>
-
-    <section id="about">
-        <h2>About Our Studio</h2>
-        <p>
-            At Nail by Miss J, we specialize in luxury aesthetic services curated to empower your beauty. We are proud nail instructors, nail tutors, and beauty mentors dedicated to precision, artistry, and exceptional salon training. From bespoke nail extensions to signature overlays, we focus on perfection down to every single detail.
-        </p>
-    </section>
-
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Nail Art</h3>
-                <p>Beautiful customized nail designs, overlays, and comprehensive master mentoring solutions.</p>
-            </div>
-            <div class="card">
-                <h3>Toes Gel</h3>
-                <p>Premium gel overlays applied to toes for a lasting, high-shine luxury finish, available plain or with custom designs.</p>
-            </div>
+        <div class="card">
+            <h3>Toes Gel</h3>
+            <p>Premium gel overlays applied to toes for a lasting, high-shine luxury finish, available plain or with custom designs.</p>
         </div>
-    </section>
-
-    <section id="gallery">
-        <h2>Beauty Gallery</h2>
-        
-        <h3 class="gallery-category-title">French tips R250</h3>
-        
-        <!-- Row Line 1 -->
-        <div class="marquee-container">
-            <div class="marquee-track dynamic-marquee">
-                <img src="1.jpeg" alt="French Tips Style 1" onclick="openLightbox(this)">
-                <img src="2.jpeg" alt="French Tips Style 2" onclick="openLightbox(this)">
-                <img src="3.jpeg" alt="French Tips Style 3" onclick="openLightbox(this)">
-                <img src="4.jpeg" alt="French Tips Style 4" onclick="openLightbox(this)">
-                <img src="5.jpeg" alt="French Tips Style 5" onclick="openLightbox(this)">
-                <img src="6.jpeg" alt="French Tips Style 6" onclick="openLightbox(this)">
-                <img src="7.jpeg" alt="French Tips Style 7" onclick="openLightbox(this)">
-                <img src="8.jpeg" alt="French Tips Style 8" onclick="openLightbox(this)">
-                <img src="9.jpeg" alt="French Tips Style 9" onclick="openLightbox(this)">
-                <img src="10.jpeg" alt="French Tips Style 10" onclick="openLightbox(this)">
-                <img src="11.jpeg" alt="French Tips Style 11" onclick="openLightbox(this)">
-                <img src="12.jpeg" alt="French Tips Style 12" onclick="openLightbox(this)">
-                <img src="13.jpeg" alt="French Tips Style 13" onclick="openLightbox(this)">
-                <img src="14.jpeg" alt="French Tips Style 14" onclick="openLightbox(this)">
-                <img src="15.jpeg" alt="French Tips Style 15" onclick="openLightbox(this)">
-                <img src="16.jpeg" alt="French Tips Style 16" onclick="openLightbox(this)">
-                <img src="17.jpeg" alt="French Tips Style 17" onclick="openLightbox(this)">
-                <img src="18.jpeg" alt="French Tips Style 18" onclick="openLightbox(this)">
-                <img src="19.jpeg" alt="French Tips Style 19" onclick="openLightbox(this)">
-            </div>
-        </div>
-
-        <!-- Row Line 2 -->
-        <div class="marquee-container">
-            <div class="marquee-track dynamic-marquee">
-                <img src="20.jpeg" alt="French Tips Style 20" onclick="openLightbox(this)">
-                <img src="21.jpeg" alt="French Tips Style 21" onclick="openLightbox(this)">
-                <img src="22.jpeg" alt="French Tips Style 22" onclick="openLightbox(this)">
-                <img src="23.jpeg" alt="French Tips Style 23" onclick="openLightbox(this)">
-                <img src="24.jpeg" alt="French Tips Style 24" onclick="openLightbox(this)">
-                <img src="25.jpeg" alt="French Tips Style 25" onclick="openLightbox(this)">
-                <img src="26.jpeg" alt="French Tips Style 26" onclick="openLightbox(this)">
-                <img src="27.jpeg" alt="French Tips Style 27" onclick="openLightbox(this)">
-                <img src="28.jpeg" alt="French Tips Style 28" onclick="openLightbox(this)">
-                <img src="29.jpeg" alt="French Tips Style 29" onclick="openLightbox(this)">
-                <img src="30.jpeg" alt="French Tips Style 30" onclick="openLightbox(this)">
-                <img src="31.jpeg" alt="French Tips Style 31" onclick="openLightbox(this)">
-                <img src="32.jpeg" alt="French Tips Style 32" onclick="openLightbox(this)">
-                <img src="33.jpeg" alt="French Tips Style 33" onclick="openLightbox(this)">
-                <img src="34.jpeg" alt="French Tips Style 34" onclick="openLightbox(this)">
-                <img src="35.jpeg" alt="French Tips Style 35" onclick="openLightbox(this)">
-                <img src="36.jpeg" alt="French Tips Style 36" onclick="openLightbox(this)">
-                <img src="37.jpeg" alt="French Tips Style 37" onclick="openLightbox(this)">
-            </div>
-        </div>
-
-        <!-- Toes Gel Showcase Section -->
-        <h3 class="gallery-category-title">Toes gel R150 with design R200</h3>
-        <div class="gallery-grid">
-           <img src="A.png" alt="Toes Gel Style A" onclick="openLightbox(this)">
-           <img src="B.png" alt="Toes Gel Style B" onclick="openLightbox(this)">
-        </div>
-    </section>
-
-    <!-- Global Image Pop-up Lightbox Container -->
-    <div id="imageLightbox" class="lightbox-modal" onclick="closeLightbox(event)">
-        <div class="lightbox-content">
-            <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-            <img id="lightboxImg" src="" alt="Expanded View">
-            <button id="lightboxBookBtn" class="btn">Book This Style Now</button>
+        <div class="card">
+            <h3>Eyelashes</h3>
+            <p>Enhance your natural beauty with expertly applied eyelash extensions for a flawless, elegant look (R250).</p>
         </div>
     </div>
-
-    <section id="booking">
-        <h2>Schedule Your Visit</h2>
-        
-        <!-- Studio Policies Block -->
-        <div class="policy-box">
-            <h3>NB: Important Studio Policies</h3>
-            <p>A 50% deposit via Ozow Instant EFT or direct bank transfer is required to confirm your booking.</p>
-            <p><strong>Direct EFT Details (Manual Transfer):</strong></p>
-            <ul>
-                <li><strong>Account Holder:</strong> Julienne Aimee</li>
-                <li><strong>Bank:</strong> FNB</li>
-                <li><strong>Account Number:</strong> 63156087223</li>
-            </ul>
-            <p>Please respect our schedule and arrive 5 minutes early prior to your scheduled time (e.g., if booked for 12:00, please arrive by 11:55).</p>
-            <p>In the event that you are running late or need to cancel, please notify us in advance via WhatsApp.</p>
+</section>
+<section id="gallery">
+    <h2>Beauty Gallery</h2>
+    
+    <h3 class="gallery-category-title">French tips R200+ depending on the Style</h3>
+    
+    <!-- Row Line 1 (Auto-moving + Draggable) -->
+    <div class="marquee-container">
+        <div class="marquee-track dynamic-marquee">
+            <img src="1.jpeg" alt="French Tips Style 1" onclick="openLightbox(this)">
+            <img src="2.jpeg" alt="French Tips Style 2" onclick="openLightbox(this)">
+            <img src="3.jpeg" alt="French Tips Style 3" onclick="openLightbox(this)">
+            <img src="4.jpeg" alt="French Tips Style 4" onclick="openLightbox(this)">
+            <img src="5.jpeg" alt="French Tips Style 5" onclick="openLightbox(this)">
+            <img src="6.jpeg" alt="French Tips Style 6" onclick="openLightbox(this)">
+            <img src="7.jpeg" alt="French Tips Style 7" onclick="openLightbox(this)">
+            <img src="8.jpeg" alt="French Tips Style 8" onclick="openLightbox(this)">
+            <img src="9.jpeg" alt="French Tips Style 9" onclick="openLightbox(this)">
+            <img src="10.jpeg" alt="French Tips Style 10" onclick="openLightbox(this)">
+            <img src="11.jpeg" alt="French Tips Style 11" onclick="openLightbox(this)">
+            <img src="12.jpeg" alt="French Tips Style 12" onclick="openLightbox(this)">
+            <img src="13.jpeg" alt="French Tips Style 13" onclick="openLightbox(this)">
+            <img src="14.jpeg" alt="French Tips Style 14" onclick="openLightbox(this)">
+            <img src="15.jpeg" alt="French Tips Style 15" onclick="openLightbox(this)">
+            <img src="16.jpeg" alt="French Tips Style 16" onclick="openLightbox(this)">
+            <img src="17.jpeg" alt="French Tips Style 17" onclick="openLightbox(this)">
+            <img src="18.jpeg" alt="French Tips Style 18" onclick="openLightbox(this)">
+            <img src="19.jpeg" alt="French Tips Style 19" onclick="openLightbox(this)">
         </div>
-
-        <div class="booking-container">
-            <form id="whatsappForm" onsubmit="sendBooking(event)">
-                <div class="form-group">
-                    <label for="clientName">Your Full Name</label>
-                    <input type="text" id="clientName" required placeholder="Enter your first and last name">
-                </div>
-
-                <div class="form-group">
-                    <label for="bookingDate">Select Appointment Date</label>
-                    <input type="date" id="bookingDate" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="bookingTime">Select Preferred Time</label>
-                    <input type="time" id="bookingTime" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Select Services</label>
-                    <div class="services-checkboxes">
-                        <div class="service-row-item">
-                            <div class="checkbox-wrapper">
-                                <label for="srv_nails">Bespoke Nail Art & Extensions</label>
-                                <input type="checkbox" id="srv_nails" value="Nail Art" onchange="calculateTotal()">
-                            </div>
-                            <select id="nail_style" class="form-group service-select" onchange="calculateTotal()">
-                                <option value="French Tips">French Tips (R250)</option>
-                                <option value="Plain Gel">Plain Gel Overlays (R180)</option>
-                                <option value="Ombre Acrylic">Ombre Full Set (R320)</option>
-                                <option value="Toes Plain">Toes Gel Plain (R150)</option>
-                                <option value="Toes Design">Toes Gel with Design (R200)</option>
-                            </select>
+    </div>
+    <!-- Row Line 2 (Auto-moving + Draggable) -->
+    <div class="marquee-container">
+        <div class="marquee-track dynamic-marquee">
+            <img src="20.jpeg" alt="French Tips Style 20" onclick="openLightbox(this)">
+            <img src="21.jpeg" alt="French Tips Style 21" onclick="openLightbox(this)">
+            <img src="22.jpeg" alt="French Tips Style 22" onclick="openLightbox(this)">
+            <img src="23.jpeg" alt="French Tips Style 23" onclick="openLightbox(this)">
+            <img src="24.jpeg" alt="French Tips Style 24" onclick="openLightbox(this)">
+            <img src="25.jpeg" alt="French Tips Style 25" onclick="openLightbox(this)">
+            <img src="26.jpeg" alt="French Tips Style 26" onclick="openLightbox(this)">
+            <img src="27.jpeg" alt="French Tips Style 27" onclick="openLightbox(this)">
+            <img src="28.jpeg" alt="French Tips Style 28" onclick="openLightbox(this)">
+            <img src="29.jpeg" alt="French Tips Style 29" onclick="openLightbox(this)">
+            <img src="30.jpeg" alt="French Tips Style 30" onclick="openLightbox(this)">
+            <img src="31.jpeg" alt="French Tips Style 31" onclick="openLightbox(this)">
+            <img src="32.jpeg" alt="French Tips Style 32" onclick="openLightbox(this)">
+            <img src="33.jpeg" alt="French Tips Style 33" onclick="openLightbox(this)">
+            <img src="34.jpeg" alt="French Tips Style 34" onclick="openLightbox(this)">
+            <img src="35.jpeg" alt="French Tips Style 35" onclick="openLightbox(this)">
+            <img src="36.jpeg" alt="French Tips Style 36" onclick="openLightbox(this)">
+            <img src="37.jpeg" alt="French Tips Style 37" onclick="openLightbox(this)">
+            <img src="38.jpeg" alt="French Tips Style 38" onclick="openLightbox(this)">
+            <img src="39.jpeg" alt="French Tips Style 39" onclick="openLightbox(this)">
+            <img src="40.jpeg" alt="French Tips Style 40" onclick="openLightbox(this)">
+            <img src="41.jpeg" alt="French Tips Style 41" onclick="openLightbox(this)">
+            <img src="42.jpeg" alt="French Tips Style 42" onclick="openLightbox(this)">
+            <img src="43.jpeg" alt="French Tips Style 43" onclick="openLightbox(this)">
+            <img src="44.jpeg" alt="French Tips Style 44" onclick="openLightbox(this)">
+            <img src="45.jpeg" alt="French Tips Style 45" onclick="openLightbox(this)">
+            <img src="46.jpeg" alt="French Tips Style 46" onclick="openLightbox(this)">
+            <img src="47.jpeg" alt="French Tips Style 47" onclick="openLightbox(this)">
+            <img src="48.jpeg" alt="French Tips Style 48" onclick="openLightbox(this)">
+            <img src="49.jpeg" alt="French Tips Style 49" onclick="openLightbox(this)">
+            <img src="50.jpeg" alt="French Tips Style 50" onclick="openLightbox(this)">
+            <img src="51.jpeg" alt="French Tips Style 51" onclick="openLightbox(this)">
+            <img src="52.jpeg" alt="French Tips Style 52" onclick="openLightbox(this)">
+            <img src="53.jpeg" alt="French Tips Style 53" onclick="openLightbox(this)">
+            <img src="54.jpeg" alt="French Tips Style 54" onclick="openLightbox(this)">
+            <img src="55.jpeg" alt="French Tips Style 55" onclick="openLightbox(this)">
+            <img src="56.jpeg" alt="French Tips Style 56" onclick="openLightbox(this)">
+            <img src="57.jpeg" alt="French Tips Style 57" onclick="openLightbox(this)">
+        </div>
+    </div>
+    <!-- Toes Gel Showcase Section -->
+    <h3 class="gallery-category-title">Toes gel R150 with design R200</h3>
+    <div class="gallery-grid">
+       <img src="A.png" alt="Toes Gel Style A" onclick="openLightbox(this)">
+       <img src="B.png" alt="Toes Gel Style B" onclick="openLightbox(this)">
+    </div>
+    <!-- Eyelashes Showcase Section -->
+    <h3 class="gallery-category-title">Eyelashes R250</h3>
+    <div class="gallery-grid">
+       <img src="AA.png" alt="Eyelashes Style AA" onclick="openLightbox(this)">
+       <img src="BB.png" alt="Eyelashes Style BB" onclick="openLightbox(this)">
+    </div>
+</section>
+<!-- Global Image Pop-up Lightbox Container -->
+<div id="imageLightbox" class="lightbox-modal" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <img id="lightboxImg" src="" alt="Expanded View">
+        <button id="lightboxBookBtn" class="btn">Book This Style Now</button>
+    </div>
+</div>
+<section id="booking">
+    <h2>Schedule Your Visit</h2>
+    
+    <!-- Studio Policies Block -->
+    <div class="policy-box">
+        <h3>NB: Important Studio Policies</h3>
+        <p>A R100 deposit via direct bank transfer is required to confirm your booking before coming.</p>
+        <p><strong>Direct Bank Transfer Details:</strong></p>
+        <ul>
+            <li><strong>Account Holder:</strong> Julienne Aimee</li>
+            <li><strong>Bank:</strong> FNB</li>
+            <li><strong>Account Number:</strong> 63156087223</li>
+        </ul>
+        <p>Please respect our schedule and arrive 5 minutes early prior to your scheduled time (e.g., if booked for 12:00, please arrive by 11:55).</p>
+        <p>In the event that you are running late or need to cancel, please notify us in advance via WhatsApp.</p>
+    </div>
+    <div class="booking-container">
+        <form id="whatsappForm" onsubmit="sendBooking(event)">
+            <div class="form-group">
+                <label for="clientName">Your Full Name</label>
+                <input type="text" id="clientName" required placeholder="Enter your first and last name">
+            </div>
+            <div class="form-group">
+                <label for="bookingDate">Select Appointment Date</label>
+                <input type="date" id="bookingDate" required>
+            </div>
+            <div class="form-group">
+                <label for="bookingTime">Select Preferred Time</label>
+                <input type="time" id="bookingTime" required>
+            </div>
+            <div class="form-group">
+                <label>Select Services</label>
+                <div class="services-checkboxes">
+                    <div class="service-row-item">
+                        <div class="checkbox-wrapper">
+                            <label for="srv_nails">Bespoke Services</label>
+                            <input type="checkbox" id="srv_nails" value="Nail Art" onchange="calculateTotal()">
                         </div>
+                        <select id="nail_style" class="form-group service-select" onchange="calculateTotal()">
+                            <option value="French Tips">French Tips (R200+ depending on the style)</option>
+                            <option value="Plain Gel">Plain Gel Overlays (R180)</option>
+                            <option value="Ombre Acrylic">Ombre Full Set (R320)</option>
+                            <option value="Toes Plain">Toes Gel Plain (R150)</option>
+                            <option value="Toes Design">Toes Gel with Design (R200)</option>
+                            <option value="Eyelashes">Eyelashes (R250)</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="price-summary" id="priceDisplay">
-                    Estimated Total: R0
-                </div>
-
-                <button type="submit" class="btn">Confirm via WhatsApp</button>
-            </form>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-container">
-            <div class="contact-box">
-                <p><strong>Address:</strong> 270 Paul Kruger Street, Pretoria Central, 0002, South Africa</p>
-                <p><strong>WhatsApp / Contact:</strong> +27 64 082 1906</p>
-                <p><strong>Weekdays:</strong> Monday to Friday (Available Open Hours)</p>
-                <p><strong>Weekends:</strong> Weekend bookings are by appointment only</p>
             </div>
-            
-            <!-- Live Interactive Google Maps Frame Component using the Address -->
-            <div class="map-wrapper">
-                <iframe 
-                    src="https://maps.google.com/maps?q=270%20paul%20kruger%20street%20pretoria%20central&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
+            <div class="price-summary" id="priceDisplay">
+                Estimated Total: R0
             </div>
+            <button type="submit" class="btn">Confirm via WhatsApp</button>
+        </form>
+    </div>
+</section>
+<section id="contact">
+    <h2>Get In Touch</h2>
+    <div class="contact-container">
+        <div class="contact-box">
+            <p><strong>Address:</strong> 270 Paul Kruger Street, Pretoria Central, 0002, South Africa</p>
+            <p><strong>WhatsApp / Contact:</strong> +27 64 082 1906</p>
+            <p><strong>Weekdays:</strong> Monday to Friday (Available Open Hours)</p>
+            <p><strong>Weekends:</strong> Weekend bookings are by appointment only</p>
         </div>
-    </section>
-
-    <footer>
-        &copy; 2026 Nail by Miss J. Crafted to Empower Your Elegance.
-    </footer>
-
-    <script>
-        function toggleMenu() {
-            const toggle = document.getElementById('menuToggle');
-            const menu = document.getElementById('navMenu');
-            toggle.classList.toggle('open');
-            menu.classList.toggle('mobile-open');
+        
+        <!-- Live Interactive Google Maps Frame Component using the Address -->
+        <div class="map-wrapper">
+            <iframe 
+                src="https://maps.google.com/maps?q=270%20paul%20kruger%20street%20pretoria%20central&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</section>
+<footer>
+    &copy; 2026 Nail by Miss J. Crafted to Empower Your Elegance.
+</footer>
+<script>
+    function toggleMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('navMenu');
+        toggle.classList.toggle('open');
+        menu.classList.toggle('mobile-open');
+    }
+    function closeMenu() {
+        document.getElementById('menuToggle').classList.remove('open');
+        document.getElementById('navMenu').classList.remove('mobile-open');
+    }
+    function openLightbox(imgElement) {
+        const modal = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        lightboxImg.src = imgElement.src;
+        modal.classList.add('show');
+    }
+    function closeLightbox(event) {
+        if (event.target.id === 'imageLightbox' || event.target.className === 'lightbox-close') {
+            document.getElementById('imageLightbox').classList.remove('show');
         }
-
-        function closeMenu() {
-            document.getElementById('menuToggle').classList.remove('open');
-            document.getElementById('navMenu').classList.remove('mobile-open');
+    }
+    function calculateTotal() {
+        let total = 0;
+        const nailChecked = document.getElementById('srv_nails').checked;
+        
+        if (nailChecked) {
+            const style = document.getElementById('nail_style').value;
+            if (style === 'French Tips') total += 200;
+            else if (style === 'Plain Gel') total += 180;
+            else if (style === 'Ombre Acrylic') total += 320;
+            else if (style === 'Toes Plain') total += 150;
+            else if (style === 'Toes Design') total += 200;
+            else if (style === 'Eyelashes') total += 250;
         }
-
-        function openLightbox(imgElement) {
-            const modal = document.getElementById('imageLightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
-            lightboxImg.src = imgElement.src;
-            modal.classList.add('show');
-        }
-
-        function closeLightbox(event) {
-            if (event.target.id === 'imageLightbox' || event.target.className === 'lightbox-close') {
-                document.getElementById('imageLightbox').classList.remove('show');
-            }
-        }
-
-        function calculateTotal() {
-            let total = 0;
-            const nailChecked = document.getElementById('srv_nails').checked;
+        
+        document.getElementById('priceDisplay').innerText = `Estimated Total: R${total}`;
+    }
+    function sendBooking(e) {
+        e.preventDefault();
+        const name = document.getElementById('clientName').value;
+        const date = document.getElementById('bookingDate').value;
+        const time = document.getElementById('bookingTime').value;
+        
+        const nailChecked = document.getElementById('srv_nails').checked;
+        let selectedStyle = "None selected";
+        let calculatedPrice = "R0";
+        if (nailChecked) {
+            const styleSelect = document.getElementById('nail_style');
+            selectedStyle = styleSelect.options[styleSelect.selectedIndex].text;
             
-            if (nailChecked) {
-                const style = document.getElementById('nail_style').value;
-                if (style === 'French Tips') total += 250;
-                else if (style === 'Plain Gel') total += 180;
-                else if (style === 'Ombre Acrylic') total += 320;
-                else if (style === 'Toes Plain') total += 150;
-                else if (style === 'Toes Design') total += 200;
-            }
-            
-            document.getElementById('priceDisplay').innerText = `Estimated Total: R${total}`;
+            if (styleSelect.value === 'French Tips') calculatedPrice = "R200+ depending";
+            else if (styleSelect.value === 'Plain Gel') calculatedPrice = "R180";
+            else if (styleSelect.value === 'Ombre Acrylic') calculatedPrice = "R320";
+            else if (styleSelect.value === 'Toes Plain') calculatedPrice = "R150";
+            else if (styleSelect.value === 'Toes Design') calculatedPrice = "R200";
+            else if (styleSelect.value === 'Eyelashes') calculatedPrice = "R250";
+        }
+        
+        const message = `Hello Miss J, I'd like to book an appointment.\n\n` +
+                        `Name: ${name}\n` +
+                        `Date: ${date}\n` +
+                        `Time: ${time}\n` +
+                        `Style: ${selectedStyle}\n` +
+                        `Price: ${calculatedPrice}`;
+                        
+        window.open(`https://wa.me/27640821906?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    /* Duplicate images for infinite auto scroll and enable mouse drag */
+    document.querySelectorAll('.marquee-container').forEach(container => {
+        const track = container.querySelector('.marquee-track');
+        if (track) {
+            track.innerHTML += track.innerHTML; // Duplicate images for continuous seamless loop
         }
 
-        function sendBooking(e) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.addEventListener('mousedown', (e) => {
+            isDown = true;
+            container.classList.add('dragging');
+            startX = e.pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isDown = false;
+            container.classList.remove('dragging');
+        });
+
+        container.addEventListener('mouseup', () => {
+            isDown = false;
+            container.classList.remove('dragging');
+        });
+
+        container.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
             e.preventDefault();
-            const name = document.getElementById('clientName').value;
-            const date = document.getElementById('bookingDate').value;
-            const time = document.getElementById('bookingTime').value;
-            
-            const nailChecked = document.getElementById('srv_nails').checked;
-            let selectedStyle = "None selected";
-            let calculatedPrice = "R0";
-
-            if (nailChecked) {
-                const styleSelect = document.getElementById('nail_style');
-                selectedStyle = styleSelect.options[styleSelect.selectedIndex].text;
-                
-                if (styleSelect.value === 'French Tips') calculatedPrice = "R250";
-                else if (styleSelect.value === 'Plain Gel') calculatedPrice = "R180";
-                else if (styleSelect.value === 'Ombre Acrylic') calculatedPrice = "R320";
-                else if (styleSelect.value === 'Toes Plain') calculatedPrice = "R150";
-                else if (styleSelect.value === 'Toes Design') calculatedPrice = "R200";
-            }
-            
-            const message = `Hello Miss J, I'd like to book an appointment.\n\n` +
-                            `Name: ${name}\n` +
-                            `Date: ${date}\n` +
-                            `Time: ${time}\n` +
-                            `Style: ${selectedStyle}\n` +
-                            `Price: ${calculatedPrice}`;
-                            
-            window.open(`https://wa.me/27640821906?text=${encodeURIComponent(message)}`, '_blank');
-        }
-    </script>
+            const x = e.pageX - container.offsetLeft;
+            const walk = (x - startX) * 2;
+            container.scrollLeft = scrollLeft - walk;
+        });
+    });
+</script>
 </body>
-
 </html>
