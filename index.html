@@ -1,435 +1,2558 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Nail by Miss J | Luxury Beauty Studio</title> 
-    <style> 
-        /* Modern Reset & Luxury Typography */ 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
-        html { scroll-behavior: smooth; }
-        body { background-color: #faf6f0; color: #2c2c2c; line-height: 1.6; overflow-x: hidden; }
-        header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 8%; border-bottom: 1px solid rgba(212, 175, 55, 0.15); }
-        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; position: relative; }
-        nav h1 { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; color: #1a1a1a; text-transform: uppercase; }
-        ul { display: flex; flex-direction: column; gap: 10px; list-style: none; position: absolute; top: 60px; left: -20px; right: -20px; background-color: #ffffff; padding: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.15); box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s ease-in-out; }
-        ul.mobile-open { max-height: 300px; opacity: 1; }
-        a { color: #555; text-decoration: none; font-size: 0.95rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s ease; display: block; padding: 10px 0; }
-        a:hover { color: #d4af37; }
-        .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 25px; height: 18px; background: transparent; border: none; cursor: pointer; z-index: 1001; }
-        .menu-toggle span { width: 100%; height: 2px; background-color: #1a1a1a; border-radius: 2px; transition: all 0.3s ease-in-out; }
-        .menu-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .menu-toggle.open span:nth-child(2) { opacity: 0; }
-        .menu-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-        .hero { display: flex; flex-direction: column-reverse; align-items: center; justify-content: center; gap: 40px; padding: 140px 8% 60px 8%; max-width: 1400px; margin: 0 auto; min-height: 90vh; }
-        .hero img { width: 100%; max-width: 420px; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); }
-        .hero-text { max-width: 550px; text-align: center; }
-        .hero-text h2 { font-size: 2.8rem; color: #1a1a1a; line-height: 1.2; margin-bottom: 20px; font-weight: 400; }
-        .hero-text p { font-size: 1.1rem; color: #666; margin-bottom: 30px; letter-spacing: 0.5px; }
-        .btn { background-color: #1a1a1a; color: #ffffff; padding: 14px 32px; font-weight: 600; display: inline-block; cursor: pointer; border: none; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease; text-align: center; width: 100%; max-width: 280px; }
-        .btn:hover { transform: translateY(-2px); background-color: #d4af37; color: #ffffff; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.15); }
-        section { padding: 80px 8%; max-width: 1400px; margin: 0 auto; text-align: center; }
-        section h2 { color: #1a1a1a; font-size: 2.2rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; position: relative; }
-        section h2::after { content: ''; display: block; width: 50px; height: 2px; background: #d4af37; margin: 15px auto 0 auto; }
-        .cards { display: flex; flex-direction: column; align-items: center; gap: 24px; }
-        .card { background: #ffffff; padding: 40px 30px; width: 100%; max-width: 360px; border-radius: 0px; border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 5px 20px rgba(0,0,0,0.02); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .card h3 { color: #1a1a1a; font-size: 1.4rem; margin-bottom: 15px; font-weight: 400; letter-spacing: 1px; }
-        .card p { color: #666; font-size: 0.95rem; }
-        .card:hover { transform: translateY(-5px); border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.05); }
-        .gallery-category-title { color: #1a1a1a; font-size: 1.5rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; margin: 50px 0 25px 0; text-align: center; width: 100%; }
-        .marquee-container { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; overflow-x: auto; overflow-y: hidden; margin-bottom: 30px; padding: 10px 0; cursor: grab; scrollbar-width: thin; scrollbar-color: #d4af37 #faf6f0; -webkit-overflow-scrolling: touch; }
-        .marquee-container:active { cursor: grabbing; }
-        .marquee-container::-webkit-scrollbar { height: 6px; }
-        .marquee-container::-webkit-scrollbar-track { background: #faf6f0; }
-        .marquee-container::-webkit-scrollbar-thumb { background-color: #d4af37; border-radius: 3px; }
-        .marquee-track { display: flex; width: max-content; gap: 20px; animation: scrollRightToLeft 45s linear infinite; }
-        .marquee-container:nth-of-type(2) .marquee-track { animation-duration: 50s; }
-        .marquee-container:hover .marquee-track, .marquee-container.dragging .marquee-track { animation-play-state: paused; }
-        .marquee-track img { width: 240px; height: 240px; object-fit: cover; border-radius: 4px; border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 10px 25px rgba(0,0,0,0.04); transition: transform 0.3s ease, border-color 0.3s ease; flex-shrink: 0; cursor: pointer; user-select: none; -webkit-user-drag: none; }
-        .marquee-track img:hover { transform: scale(1.03); border-color: #d4af37; }
-        @keyframes scrollRightToLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .lightbox-modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 254, 252, 0.98); backdrop-filter: blur(5px); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease-in-out; }
-        .lightbox-modal.show { display: flex; opacity: 1; }
-        .lightbox-content { display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 90%; width: 400px; position: relative; }
-        .lightbox-content img { width: 100%; height: auto; max-height: 65vh; object-fit: cover; border-radius: 4px; border: 1px solid #d4af37; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .lightbox-close { position: absolute; top: -45px; right: 0; color: #1a1a1a; font-size: 35px; font-weight: 300; cursor: pointer; transition: color 0.2s; }
-        .lightbox-close:hover { color: #d4af37; }
-        .gallery-grid { display: flex; flex-direction: column; align-items: center; gap: 24px; width: 100%; margin-bottom: 30px; }
-        .gallery-grid img { width: 100%; max-width: 340px; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 10px 25px rgba(0,0,0,0.04); cursor: pointer; }
-        #about p { max-width: 750px; margin: 0 auto; font-size: 1.1rem; color: #4a4a4a; line-height: 1.8; text-align: justify; }
-        .policy-box { background: #ffffff; border: 1px solid rgba(212, 175, 55, 0.4); border-left: 4px solid #d4af37; padding: 25px 30px; max-width: 650px; margin: 0 auto 30px auto; text-align: left; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02); }
-        .policy-box h3 { color: #1a1a1a; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; font-weight: 600; }
-        .policy-box p { color: #4a4a4a; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.6; }
-        .policy-box p:last-child { margin-bottom: 0; }
-        .policy-box ul { position: static; display: block; background: none; box-shadow: none; border: none; padding: 0 0 0 18px; max-height: none; opacity: 1; text-align: left; margin-bottom: 12px; list-style: disc; }
-        .policy-box ul li { color: #4a4a4a; font-size: 0.95rem; margin-bottom: 4px; }
-        .booking-container { background: #ffffff; padding: 35px 24px; border-radius: 0px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03); width: 100%; max-width: 650px; margin: 0 auto; text-align: left; }
-        .form-group { margin-bottom: 24px; }
-        .form-group label { display: block; color: #1a1a1a; margin-bottom: 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .form-group input, .form-group select { width: 100%; padding: 14px; border-radius: 0px; border: 1px solid rgba(0, 0, 0, 0.1); background: #fafafa; color: #2c2c2c; font-size: 15px; transition: all 0.3s ease; outline: none; }
-        .form-group input:focus, .form-group select:focus { border-color: #d4af37; background: #ffffff; box-shadow: 0 0 8px rgba(212, 175, 55, 0.15); }
-        .services-checkboxes { background: #fafafa; padding: 20px; border-radius: 0px; border: 1px solid rgba(0, 0, 0, 0.05); }
-        .service-row-item { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
-        .service-row-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-        .checkbox-wrapper { display: flex; align-items: center; justify-content: space-between; }
-        .service-row-item label { margin-bottom: 0; font-weight: normal; color: #444; text-transform: none; letter-spacing: 0; font-size: 15px; cursor: pointer; }
-        .service-row-item input[type="checkbox"] { width: auto; transform: scale(1.2); cursor: pointer; accent-color: #d4af37; }
-        .service-select { margin-top: 5px; font-size: 14px !important; padding: 8px 10px !important; border-color: rgba(212, 175, 55, 0.15) !important; }
-        .price-summary { font-size: 1.2rem; font-weight: 600; color: #1a1a1a; text-align: center; margin: 30px 0 20px 0; padding: 15px; background: #f4eae1; border-radius: 0px; border: 1px dashed #d4af37; letter-spacing: 0.5px; }
-        .booking-container .btn { max-width: 100%; }
-        .contact-container { display: flex; flex-direction: column; gap: 30px; max-width: 1000px; margin: 0 auto; align-items: center; }
-        .contact-box { background: #ffffff; padding: 40px 30px; border-radius: 0px; width: 100%; max-width: 480px; border: 1px solid rgba(0, 0, 0, 0.05); text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        .contact-box p { margin-bottom: 15px; font-size: 15px; color: #555; line-height: 1.5; }
-        .map-wrapper { width: 100%; max-width: 480px; height: 320px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-        .map-wrapper iframe { width: 100%; height: 100%; border: 0; }
-        footer { background: #1a1a1a; padding: 30px; text-align: center; color: #a0a0a0; font-size: 12px; letter-spacing: 1px; border-top: 1px solid rgba(212, 175, 55, 0.2); }
-        @media(min-width: 768px) {
-            header { padding: 20px 8%; }
-            .menu-toggle { display: none; }
-            ul { display: flex; flex-direction: row; gap: 30px; position: static; padding: 0; background: transparent; border-bottom: none; max-height: none; opacity: 1; overflow: visible; width: auto; box-shadow: none; }
-            a { font-size: 0.95rem; padding: 0; }
-            .hero { flex-direction: row; padding: 180px 8% 100px 8%; gap: 80px; text-align: left; }
-            .hero-text { text-align: left; }
-            .hero img { max-width: 460px; }
-            .hero-text h2 { font-size: 3.5rem; line-height: 1.2; }
-            section { padding: 100px 8%; }
-            section h2 { font-size: 2.5rem; }
-            .cards { flex-direction: row; justify-content: center; gap: 30px; }
-            .card { width: 340px; }
-            .gallery-grid { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 25px; }
-            .gallery-grid img { width: 260px; }
-            .booking-container { padding: 50px; }
-            .contact-container { flex-direction: row; justify-content: center; align-items: stretch; }
-            .contact-box, .map-wrapper { max-width: 480px; width: 50%; }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nails Bliss by Michelle | Premium Nail Studio</title>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    :root {
+        --primary-burgundy: #582338;
+        --primary-dark: #3b1423;
+        --accent-mauve: #8c4c62;
+        --accent-rose: #d48b9f;
+        --bg-cream: #faf5f3;
+        --bg-card: #ffffff;
+        --text-dark: #2c1d23;
+        --text-muted: #6e5c63;
+        --border-light: #e8d8de;
+        --gold-accent: #d4af37;
+        --warning-bg: #fff7e6;
+        --warning-border: #e7b84b;
+        --warning-text: #6b4d00;
+        --shadow-soft: 0 10px 30px rgba(88, 35, 56, 0.08);
+        --shadow-hover: 0 15px 35px rgba(88, 35, 56, 0.15);
+        --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--bg-cream);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+        font-family: 'Cormorant Garamond', serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    /* NAVIGATION */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 8%;
+        background: rgba(250, 245, 243, 0.92);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(88, 35, 56, 0.08);
+        transition: var(--transition-smooth);
+    }
+
+    .navbar.scrolled {
+        padding: 0.8rem 8%;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .logo-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--primary-burgundy);
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    .logo-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        color: var(--accent-mauve);
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-dark);
+        transition: var(--transition-smooth);
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: var(--primary-burgundy);
+        transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+        width: 100%;
+    }
+
+    .btn-book-nav {
+        background: var(--primary-burgundy);
+        color: #fff !important;
+        padding: 0.6rem 1.4rem;
+        border-radius: 30px;
+        transition: var(--transition-smooth) !important;
+    }
+
+    .btn-book-nav:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(88, 35, 56, 0.3);
+    }
+
+    .btn-book-nav::after {
+        display: none !important;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+        font-size: 1.5rem;
+        color: var(--primary-burgundy);
+        cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+        min-height: 100vh;
+        padding-top: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 8%;
+        padding-right: 8%;
+        position: relative;
+        background: radial-gradient(circle at 90% 10%, rgba(212, 139, 159, 0.15) 0%, rgba(250, 245, 243, 0) 60%);
+    }
+
+    .hero-content {
+        max-width: 550px;
+        z-index: 2;
+    }
+
+    .hero-tag {
+        display: inline-block;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--accent-mauve);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        padding: 0.4rem 1rem;
+        background: rgba(140, 76, 98, 0.08);
+        border-radius: 20px;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+        line-height: 1.1;
+        color: var(--primary-burgundy);
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+    }
+
+    .hero-slogan {
+        font-style: italic;
+        font-size: 1.8rem;
+        color: var(--accent-mauve);
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+
+    .hero-desc {
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        font-size: 1rem;
+    }
+
+    .hero-btns {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+    }
+
+    .btn-primary {
+        background-color: var(--primary-burgundy);
+        color: #fff;
+        padding: 1rem 2.2rem;
+        border-radius: 30px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: var(--transition-smooth);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(88, 35, 56, 0.25);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(88, 35, 56, 0.35);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--primary-burgundy);
+        border: 2px solid var(--primary-burgundy);
+        padding: 0.9rem 2rem;
+        border-radius: 30px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        transition: var(--transition-smooth);
+        cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+        background-color: rgba(88, 35, 56, 0.05);
+        transform: translateY(-3px);
+    }
+
+    .hero-image-wrapper {
+        position: relative;
+        width: 45%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-image-card {
+        width: 320px;
+        height: 440px;
+        border-radius: 120px 120px 20px 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow-hover);
+        border: 8px solid #fff;
+        position: relative;
+        transform: rotate(-3deg);
+        transition: var(--transition-smooth);
+    }
+
+    .hero-image-card:hover {
+        transform: rotate(0deg) scale(1.02);
+    }
+
+    .hero-image-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-badge {
+        position: absolute;
+        bottom: 20px;
+        left: -30px;
+        background: #fff;
+        padding: 1.2rem;
+        border-radius: 16px;
+        box-shadow: var(--shadow-soft);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border-left: 4px solid var(--primary-burgundy);
+        animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
         }
-    </style>
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .hero-badge i {
+        font-size: 1.8rem;
+        color: var(--primary-burgundy);
+    }
+
+    .hero-badge-text strong {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+    }
+
+    .hero-badge-text span {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+    /* SECTIONS */
+    .section-padding {
+        padding: 6rem 8%;
+    }
+
+    .section-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 4rem auto;
+    }
+
+    .section-subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent-mauve);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .section-title {
+        font-size: 3rem;
+        color: var(--primary-burgundy);
+        line-height: 1.2;
+    }
+
+    /* PRICE LIST */
+    .price-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .price-card {
+        background: var(--bg-card);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid var(--border-light);
+        transition: var(--transition-smooth);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .price-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-burgundy), var(--accent-rose));
+    }
+
+    .price-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .price-category-title {
+        font-size: 1.8rem;
+        color: var(--primary-burgundy);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        border-bottom: 2px dashed var(--border-light);
+        padding-bottom: 0.8rem;
+    }
+
+    .price-category-title i {
+        font-size: 1.3rem;
+        color: var(--accent-mauve);
+    }
+
+    .price-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 1.2rem;
+        position: relative;
+    }
+
+    .price-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .price-name {
+        font-weight: 500;
+        color: var(--text-dark);
+        background: var(--bg-card);
+        padding-right: 8px;
+        z-index: 1;
+    }
+
+    .price-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted #ccc;
+        margin: 0 5px;
+    }
+
+    .price-value {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--primary-burgundy);
+        background: rgba(88, 35, 56, 0.06);
+        padding: 0.2rem 0.8rem;
+        border-radius: 12px;
+        z-index: 1;
+    }
+
+    /* IMPORTANT HOUSE CALL NOTICE */
+    .house-call-notice {
+        margin-top: 2.5rem;
+        background: var(--warning-bg);
+        border: 2px solid var(--warning-border);
+        border-radius: 18px;
+        padding: 1.5rem 1.8rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        box-shadow: 0 8px 20px rgba(107, 77, 0, 0.08);
+    }
+
+    .house-call-notice-icon {
+        min-width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--warning-border);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+    }
+
+    .house-call-notice h4 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--warning-text);
+        margin-bottom: 0.35rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .house-call-notice p {
+        color: var(--warning-text);
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .house-call-notice strong {
+        font-weight: 700;
+    }
+
+    /* HOUSE CALL BANNER CSS KEPT AS REQUESTED */
+    .house-call-banner {
+        margin-top: 2rem;
+        background: linear-gradient(135deg, var(--primary-burgundy), var(--primary-dark));
+        color: #fff;
+        border-radius: 20px;
+        padding: 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: var(--shadow-hover);
+    }
+
+    .house-call-info {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .house-call-info i {
+        font-size: 2.8rem;
+        color: var(--accent-rose);
+    }
+
+    .house-call-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .house-call-info p {
+        color: rgba(255,255,255,0.8);
+        font-size: 0.95rem;
+    }
+
+    .house-call-fee {
+        display: inline-block;
+        margin-top: 0.5rem;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    /* GALLERY */
+    .gallery-section {
+        background-color: #f4ece9;
+    }
+
+    .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        background: transparent;
+        border: 1px solid var(--border-light);
+        padding: 0.6rem 1.5rem;
+        border-radius: 25px;
+        color: var(--text-dark);
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        font-size: 0.85rem;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: var(--primary-burgundy);
+        color: #fff;
+        border-color: var(--primary-burgundy);
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        height: 340px;
+        box-shadow: var(--shadow-soft);
+        cursor: pointer;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(59, 20, 35, 0.85) 0%, rgba(0, 0, 0, 0) 60%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        color: #fff;
+        opacity: 0;
+        transition: var(--transition-smooth);
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.08);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .gallery-category-tag {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--accent-rose);
+        font-weight: 600;
+    }
+
+    .gallery-title {
+        font-size: 1.4rem;
+        font-family: 'Cormorant Garamond', serif;
+        margin-top: 0.2rem;
+    }
+
+    /* BOOKING */
+    .booking-container {
+        background: #fff;
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: var(--shadow-hover);
+        max-width: 900px;
+        margin: 0 auto;
+        border: 1px solid var(--border-light);
+    }
+
+    .booking-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-group.full-width {
+        grid-column: span 2;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-dark);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.9rem 1.2rem;
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.95rem;
+        background: var(--bg-cream);
+        color: var(--text-dark);
+        transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary-burgundy);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(88, 35, 56, 0.1);
+    }
+
+    /* BOOKING HOUSE CALL WARNING */
+    .booking-house-call-notice {
+        display: none;
+        background: var(--warning-bg);
+        border: 2px solid var(--warning-border);
+        border-radius: 14px;
+        padding: 1rem 1.2rem;
+        margin-top: 0.5rem;
+        color: var(--warning-text);
+        font-size: 0.85rem;
+    }
+
+    .booking-house-call-notice.active {
+        display: block;
+    }
+
+    .booking-house-call-notice i {
+        margin-right: 0.5rem;
+    }
+
+    .booking-house-call-notice strong {
+        font-weight: 700;
+    }
+
+    /* PRICE BREAKDOWN */
+    .price-estimate-box {
+        background: rgba(88, 35, 56, 0.04);
+        border-radius: 12px;
+        padding: 1.4rem;
+        border: 1px dashed var(--accent-mauve);
+    }
+
+    .price-breakdown {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        margin-bottom: 1rem;
+    }
+
+    .price-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    .price-line.house-call-line {
+        color: var(--warning-text);
+        font-weight: 600;
+    }
+
+    .price-total-line {
+        border-top: 1px solid var(--border-light);
+        padding-top: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .price-estimate-label {
+        font-weight: 700;
+        color: var(--primary-burgundy);
+    }
+
+    .price-estimate-amount {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-burgundy);
+        font-family: 'Cormorant Garamond', serif;
+    }
+
+    .fee-note {
+        margin-top: 0.7rem;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-align: right;
+    }
+
+    /* FOOTER */
+    footer {
+        background: var(--primary-dark);
+        color: #fff;
+        padding: 4rem 8% 2rem 8%;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        color: var(--accent-rose);
+    }
+
+    .footer-col p {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+        color: rgba(255,255,255,0.85);
+        font-size: 0.95rem;
+    }
+
+    .footer-contact-item i {
+        color: var(--accent-rose);
+        font-size: 1.1rem;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        transition: var(--transition-smooth);
+    }
+
+    .social-icon:hover {
+        background: var(--accent-rose);
+        transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.5);
+        font-size: 0.85rem;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.9);
+        z-index: 2000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .lightbox.active {
+        display: flex;
+    }
+
+    .lightbox img {
+        max-width: 90%;
+        max-height: 85vh;
+        border-radius: 12px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: #fff;
+        font-size: 2.5rem;
+        cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+
+        .hero {
+            flex-direction: column;
+            text-align: center;
+            padding-top: 140px;
+            padding-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 100%;
+            margin-bottom: 3rem;
+        }
+
+        .hero-btns {
+            justify-content: center;
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+        }
+
+        .booking-form {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group.full-width {
+            grid-column: span 1;
+        }
+
+    }
+
+    @media (max-width: 768px) {
+
+        .hero-title {
+            font-size: 2.8rem;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: var(--bg-cream);
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links.active {
+            left: 0;
+        }
+
+        .house-call-banner {
+            flex-direction: column;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .house-call-info {
+            flex-direction: column;
+        }
+
+        .house-call-notice {
+            text-align: left;
+        }
+
+        .booking-container {
+            padding: 2rem 1.2rem;
+        }
+
+        .section-padding {
+            padding: 4rem 5%;
+        }
+
+        .hero {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .navbar {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .price-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+    }
+
+    @media (max-width: 500px) {
+
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-btns {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .hero-btns a {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .hero-image-card {
+            width: 280px;
+            height: 390px;
+        }
+
+        .hero-badge {
+            left: 0;
+        }
+
+    }
+</style>
 </head>
+
 <body>
-<header>
-    <nav>
-        <h1>Nail by Miss J</h1>
-        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar" id="navbar">
+
+    <div class="logo">
+        <div class="logo-title">Nails Bliss</div>
+        <div class="logo-subtitle">By Michelle</div>
+    </div>
+
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+
+        <li>
+            <a href="#home" class="active">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#services">
+                Price List
+            </a>
+        </li>
+
+        <li>
+            <a href="#gallery">
+                Style Gallery
+            </a>
+        </li>
+
+        <li>
+            <a href="#booking" class="btn-book-nav">
+                Book Appointment
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            Luxury Hand & Nail Care
+        </span>
+
+        <h1 class="hero-title">
+            Nails Bliss
+        </h1>
+
+        <span class="hero-slogan">
+            Look good. Feel good. Do nails.
+        </span>
+
+        <p class="hero-desc">
+            Experience couture nail art and precision acrylic styling
+            designed to express your unique beauty. From minimal elegant
+            plain sets to intricate 3D decorated art.
+        </p>
+
+        <div class="hero-btns">
+
+            <a href="#booking" class="btn-primary">
+                Book Now
+                <i class="fa-solid fa-calendar-check"></i>
+            </a>
+
+            <a href="#services" class="btn-secondary">
+                View Prices
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-image-wrapper">
+
+        <div class="hero-image-card">
+
+            <img
+                src="1.jpeg"
+                alt="Nails Bliss Showcase"
+            >
+
+        </div>
+
+
+        <div class="hero-badge">
+
+            <i class="fa-solid fa-heart"></i>
+
+            <div class="hero-badge-text">
+
+                <strong>
+                    Your NAILS
+                </strong>
+
+                <span>
+                    are our PASSION
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICE LIST -->
+
+<section class="section-padding" id="services">
+
+    <div class="section-header">
+
+        <span class="section-subtitle">
+            Transparent Pricing
+        </span>
+
+        <h2 class="section-title">
+            Services & Menu
+        </h2>
+
+    </div>
+
+
+    <div class="price-grid">
+
+        <div class="price-card">
+
+            <h3 class="price-category-title">
+                <i class="fa-solid fa-gem"></i>
+                Plain
+            </h3>
+
+            <div class="price-item">
+                <span class="price-name">Short</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R150</span>
+            </div>
+
+            <div class="price-item">
+                <span class="price-name">Medium plain</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R180</span>
+            </div>
+
+            <div class="price-item">
+                <span class="price-name">Long</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R220</span>
+            </div>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <h3 class="price-category-title">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Decorated
+            </h3>
+
+            <div class="price-item">
+                <span class="price-name">Short</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R170</span>
+            </div>
+
+            <div class="price-item">
+                <span class="price-name">Medium</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R220</span>
+            </div>
+
+            <div class="price-item">
+                <span class="price-name">Long</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R270</span>
+            </div>
+
+            <div class="price-item">
+                <span class="price-name">X-Long</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R320</span>
+            </div>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <h3 class="price-category-title">
+                <i class="fa-solid fa-spa"></i>
+                Toes / Pedicure
+            </h3>
+
+            <div class="price-item">
+                <span class="price-name">Plain Acrylic</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R100</span>
+            </div>
+
+            <div class="price-item">
+                <span class="price-name">Decorated</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R120</span>
+            </div>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <h3 class="price-category-title">
+                <i class="fa-solid fa-hand-sparkles"></i>
+                Maintenance
+            </h3>
+
+            <div class="price-item">
+                <span class="price-name">Refill</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R150</span>
+            </div>
+
+            <div class="price-item">
+                <span class="price-name">Buff & Shine</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R80</span>
+            </div>
+
+            <div class="price-item">
+                <span class="price-name">Soak - Off</span>
+                <span class="price-dots"></span>
+                <span class="price-value">R60</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- IMPORTANT NOTICE -->
+
+    <div class="house-call-notice">
+
+        <div class="house-call-notice-icon">
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+        </div>
+
+        <div>
+
+            <h4>
+                NB: House Call Fee
+            </h4>
+
+            <p>
+
+                <strong>
+                    House calls have an additional R150 call-out fee.
+                </strong>
+
+                This R150 is added to the price of the nail service you choose.
+                For example, if your selected service is R200, a house call will
+                cost R350 in total.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section class="section-padding gallery-section" id="gallery">
+
+    <div class="section-header">
+
+        <span class="section-subtitle">
+            Our Work
+        </span>
+
+        <h2 class="section-title">
+            Style Portfolio
+        </h2>
+
+    </div>
+
+
+    <div class="filter-buttons">
+
+        <button
+            class="filter-btn active"
+            data-filter="all"
+        >
+            All Styles
         </button>
-        <ul id="navMenu">
-            <li><a href="#home" onclick="closeMenu()">Home</a></li>
-            <li><a href="#about" onclick="closeMenu()">About</a></li>
-            <li><a href="#services" onclick="closeMenu()">Services</a></li>
-            <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
-            <li><a href="#booking" onclick="closeMenu()">Book Now</a></li>
-            <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-        </ul>
-    </nav>
-</header>
 
-<section id="home" class="hero">
-    <div class="hero-text">
-        <h2>Luxury Beauty Experience</h2>
-        <p>Indulge in professional nail designs and structural acrylic extensions custom-tailored for your style.</p>
-        <a href="#booking" class="btn">Book Appointment</a>
-    </div>
-</section>
+        <button
+            class="filter-btn"
+            data-filter="decorated"
+        >
+            Decorated & Art
+        </button>
 
-<section id="about">
-    <h2>About Our Studio</h2>
-    <p>
-        At Nail by Miss J, we specialize in luxury aesthetic services curated to empower your beauty. We are proud nail instructors, nail tutors, and beauty mentors dedicated to precision, artistry, and exceptional salon training. From bespoke nail extensions to signature overlays, we focus on perfection down to every single detail.
-    </p>
-</section>
+        <button
+            class="filter-btn"
+            data-filter="plain"
+        >
+            Plain Elegance
+        </button>
 
-<section id="services">
-    <h2>Our Services</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Nail Art & Extensions</h3>
-            <p>Bespoke gel overlays, acrylic sets, French styles, custom nail designs, and long length options.</p>
-        </div>
-        <div class="card">
-            <h3>Pedicure Gel</h3>
-            <p>Pedicure gel overlays applied to toes for a lasting high-shine finish (R150 plain / R200 with design).</p>
-        </div>
-        <div class="card">
-            <h3>Eyelashes</h3>
-            <p>Enhance your natural beauty with expertly applied eyelash extensions for an elegant look (R250).</p>
-        </div>
-    </div>
-</section>
+        <button
+            class="filter-btn"
+            data-filter="french"
+        >
+            French & Tips
+        </button>
 
-<section id="gallery">
-    <h2>Beauty Gallery</h2>
-    
-    <h3 class="gallery-category-title">French tips R200+ depending on the Style</h3>
-    
-    <div class="marquee-container">
-        <div class="marquee-track dynamic-marquee">
-            <img src="1.jpeg" alt="French Tips Style 1" onclick="openLightbox(this)">
-            <img src="2.jpeg" alt="French Tips Style 2" onclick="openLightbox(this)">
-            <img src="3.jpeg" alt="French Tips Style 3" onclick="openLightbox(this)">
-            <img src="4.jpeg" alt="French Tips Style 4" onclick="openLightbox(this)">
-            <img src="5.jpeg" alt="French Tips Style 5" onclick="openLightbox(this)">
-            <img src="6.jpeg" alt="French Tips Style 6" onclick="openLightbox(this)">
-            <img src="7.jpeg" alt="French Tips Style 7" onclick="openLightbox(this)">
-            <img src="8.jpeg" alt="French Tips Style 8" onclick="openLightbox(this)">
-            <img src="9.jpeg" alt="French Tips Style 9" onclick="openLightbox(this)">
-            <img src="10.jpeg" alt="French Tips Style 10" onclick="openLightbox(this)">
-            <img src="11.jpeg" alt="French Tips Style 11" onclick="openLightbox(this)">
-            <img src="12.jpeg" alt="French Tips Style 12" onclick="openLightbox(this)">
-            <img src="13.jpeg" alt="French Tips Style 13" onclick="openLightbox(this)">
-            <img src="14.jpeg" alt="French Tips Style 14" onclick="openLightbox(this)">
-            <img src="15.jpeg" alt="French Tips Style 15" onclick="openLightbox(this)">
-            <img src="16.jpeg" alt="French Tips Style 16" onclick="openLightbox(this)">
-            <img src="17.jpeg" alt="French Tips Style 17" onclick="openLightbox(this)">
-            <img src="18.jpeg" alt="French Tips Style 18" onclick="openLightbox(this)">
-            <img src="19.jpeg" alt="French Tips Style 19" onclick="openLightbox(this)">
-        </div>
     </div>
 
-    <div class="marquee-container">
-        <div class="marquee-track dynamic-marquee">
-            <img src="20.jpeg" alt="French Tips Style 20" onclick="openLightbox(this)">
-            <img src="21.jpeg" alt="French Tips Style 21" onclick="openLightbox(this)">
-            <img src="22.jpeg" alt="French Tips Style 22" onclick="openLightbox(this)">
-            <img src="23.jpeg" alt="French Tips Style 23" onclick="openLightbox(this)">
-            <img src="24.jpeg" alt="French Tips Style 24" onclick="openLightbox(this)">
-            <img src="25.jpeg" alt="French Tips Style 25" onclick="openLightbox(this)">
-            <img src="26.jpeg" alt="French Tips Style 26" onclick="openLightbox(this)">
-            <img src="27.jpeg" alt="French Tips Style 27" onclick="openLightbox(this)">
-            <img src="28.jpeg" alt="French Tips Style 28" onclick="openLightbox(this)">
-            <img src="29.jpeg" alt="French Tips Style 29" onclick="openLightbox(this)">
-            <img src="30.jpeg" alt="French Tips Style 30" onclick="openLightbox(this)">
-            <img src="31.jpeg" alt="French Tips Style 31" onclick="openLightbox(this)">
-            <img src="32.jpeg" alt="French Tips Style 32" onclick="openLightbox(this)">
-            <img src="33.jpeg" alt="French Tips Style 33" onclick="openLightbox(this)">
-            <img src="34.jpeg" alt="French Tips Style 34" onclick="openLightbox(this)">
-            <img src="35.jpeg" alt="French Tips Style 35" onclick="openLightbox(this)">
-            <img src="36.jpeg" alt="French Tips Style 36" onclick="openLightbox(this)">
-            <img src="37.jpeg" alt="French Tips Style 37" onclick="openLightbox(this)">
-            <img src="38.jpeg" alt="French Tips Style 38" onclick="openLightbox(this)">
-            <img src="39.jpeg" alt="French Tips Style 39" onclick="openLightbox(this)">
-            <img src="40.jpeg" alt="French Tips Style 40" onclick="openLightbox(this)">
-            <img src="41.jpeg" alt="French Tips Style 41" onclick="openLightbox(this)">
-            <img src="42.jpeg" alt="French Tips Style 42" onclick="openLightbox(this)">
-            <img src="43.jpeg" alt="French Tips Style 43" onclick="openLightbox(this)">
-            <img src="44.jpeg" alt="French Tips Style 44" onclick="openLightbox(this)">
-            <img src="45.jpeg" alt="French Tips Style 45" onclick="openLightbox(this)">
-            <img src="46.jpeg" alt="French Tips Style 46" onclick="openLightbox(this)">
-            <img src="47.jpeg" alt="French Tips Style 47" onclick="openLightbox(this)">
-            <img src="48.jpeg" alt="French Tips Style 48" onclick="openLightbox(this)">
-            <img src="49.jpeg" alt="French Tips Style 49" onclick="openLightbox(this)">
-            <img src="50.jpeg" alt="French Tips Style 50" onclick="openLightbox(this)">
-            <img src="51.jpeg" alt="French Tips Style 51" onclick="openLightbox(this)">
-            <img src="52.jpeg" alt="French Tips Style 52" onclick="openLightbox(this)">
-            <img src="53.jpeg" alt="French Tips Style 53" onclick="openLightbox(this)">
-            <img src="54.jpeg" alt="French Tips Style 54" onclick="openLightbox(this)">
-            <img src="55.jpeg" alt="French Tips Style 55" onclick="openLightbox(this)">
-            <img src="56.jpeg" alt="French Tips Style 56" onclick="openLightbox(this)">
-            <img src="57.jpeg" alt="French Tips Style 57" onclick="openLightbox(this)">
-        </div>
-    </div>
 
-    <h3 class="gallery-category-title">Pedicure gel R150 with design R200</h3>
     <div class="gallery-grid">
-       <img src="A.png" alt="Toes Gel Style A" onclick="openLightbox(this)">
-       <img src="B.png" alt="Toes Gel Style B" onclick="openLightbox(this)">
+
+        <!-- IMAGE 1 -->
+
+        <div
+            class="gallery-item"
+            data-category="french"
+            onclick="openLightbox('1.jpeg')"
+        >
+
+            <img
+                src="1.jpeg"
+                alt="French Tip with Butterfly Art"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Decorated Long
+                </span>
+
+                <h4 class="gallery-title">
+                    French Tip & Butterfly Charm
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 2 -->
+
+        <div
+            class="gallery-item"
+            data-category="decorated"
+            onclick="openLightbox('2.jpeg')"
+        >
+
+            <img
+                src="2.jpeg"
+                alt="Stiletto Bow Accent"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    3D Art
+                </span>
+
+                <h4 class="gallery-title">
+                    Stiletto with Bow Accent
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 3 -->
+
+        <div
+            class="gallery-item"
+            data-category="plain"
+            onclick="openLightbox('3.jpeg')"
+        >
+
+            <img
+                src="3.jpeg"
+                alt="Nude Almond Set"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Plain Medium
+                </span>
+
+                <h4 class="gallery-title">
+                    Classic Nude Almond
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 4 -->
+
+        <div
+            class="gallery-item"
+            data-category="french"
+            onclick="openLightbox('4.jpeg')"
+        >
+
+            <img
+                src="4.jpeg"
+                alt="Sky Blue French Tips"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Decorated Short
+                </span>
+
+                <h4 class="gallery-title">
+                    Sky Blue French Square
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 5 -->
+
+        <div
+            class="gallery-item"
+            data-category="plain"
+            onclick="openLightbox('5.jpeg')"
+        >
+
+            <img
+                src="5.jpeg"
+                alt="Deep Wine Red"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Plain Long
+                </span>
+
+                <h4 class="gallery-title">
+                    Deep Burgundy Gloss
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 6 -->
+
+        <div
+            class="gallery-item"
+            data-category="decorated"
+            onclick="openLightbox('6.jpeg')"
+        >
+
+            <img
+                src="6.jpeg"
+                alt="Flame & Cross Art"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Custom Art
+                </span>
+
+                <h4 class="gallery-title">
+                    Flame Art & Chrome Cross
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 7 -->
+
+        <div
+            class="gallery-item"
+            data-category="decorated"
+            onclick="openLightbox('7.jpeg')"
+        >
+
+            <img
+                src="7.jpeg"
+                alt="Neon Pink Tips with Gold Cross"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Decorated Medium
+                </span>
+
+                <h4 class="gallery-title">
+                    Hot Pink French & Gold Cross
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 8 -->
+
+        <div
+            class="gallery-item"
+            data-category="decorated"
+            onclick="openLightbox('8.jpeg')"
+        >
+
+            <img
+                src="8.jpeg"
+                alt="Smokey Line Design"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Artistic
+                </span>
+
+                <h4 class="gallery-title">
+                    Smokey Quartz & Gold Outline
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 9 -->
+
+        <div
+            class="gallery-item"
+            data-category="decorated"
+            onclick="openLightbox('9.jpeg')"
+        >
+
+            <img
+                src="9.jpeg"
+                alt="Zebra Print & Animal Art"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Decorated
+                </span>
+
+                <h4 class="gallery-title">
+                    Monochrome Animal Print
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 10 -->
+
+        <div
+            class="gallery-item"
+            data-category="decorated"
+            onclick="openLightbox('10.jpeg')"
+        >
+
+            <img
+                src="10.jpeg"
+                alt="Spider-Man Themed Nails"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Character Art
+                </span>
+
+                <h4 class="gallery-title">
+                    Spider-Man Character Set
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 11 -->
+
+        <div
+            class="gallery-item"
+            data-category="plain"
+            onclick="openLightbox('11.jpeg')"
+        >
+
+            <img
+                src="11.jpeg"
+                alt="Minimalist Pink Set"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Plain Short
+                </span>
+
+                <h4 class="gallery-title">
+                    Soft Rose Nude
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 12 -->
+
+        <div
+            class="gallery-item"
+            data-category="french"
+            onclick="openLightbox('12.jpeg')"
+        >
+
+            <img
+                src="12.jpeg"
+                alt="Glitter French Outline"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    French
+                </span>
+
+                <h4 class="gallery-title">
+                    Glitter French Contour
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 13 -->
+
+        <div
+            class="gallery-item"
+            data-category="decorated"
+            onclick="openLightbox('13.jpeg')"
+        >
+
+            <img
+                src="13.jpeg"
+                alt="Marble & Gold Leaf"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Decorated Long
+                </span>
+
+                <h4 class="gallery-title">
+                    Rose Marble & Gold Foil
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 14 -->
+
+        <div
+            class="gallery-item"
+            data-category="plain"
+            onclick="openLightbox('14.jpeg')"
+        >
+
+            <img
+                src="14.jpeg"
+                alt="Matte & Gloss Accent"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Plain Medium
+                </span>
+
+                <h4 class="gallery-title">
+                    Plum Gloss Finish
+                </h4>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE 15 -->
+
+        <div
+            class="gallery-item"
+            data-category="decorated"
+            onclick="openLightbox('15.png')"
+        >
+
+            <img
+                src="15.png"
+                alt="Latest Nail Style"
+            >
+
+            <div class="gallery-overlay">
+
+                <span class="gallery-category-tag">
+                    Decorated
+                </span>
+
+                <h4 class="gallery-title">
+                    New Nail Design
+                </h4>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <h3 class="gallery-category-title">Eyelashes R250</h3>
-    <div class="gallery-grid">
-       <img src="AA.png" alt="Eyelashes Style AA" onclick="openLightbox(this)">
-       <img src="BB.png" alt="Eyelashes Style BB" onclick="openLightbox(this)">
-    </div>
 </section>
 
-<div id="imageLightbox" class="lightbox-modal" onclick="closeLightbox(event)">
-    <div class="lightbox-content">
-        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <img id="lightboxImg" src="" alt="Expanded View">
-        <button id="lightboxBookBtn" class="btn">Book This Style Now</button>
-    </div>
-</div>
 
-<section id="booking">
-    <h2>Schedule Your Visit</h2>
-    
-    <div class="policy-box">
-        <h3>NB: Important Studio Policies</h3>
-        <p>A R100 deposit via direct bank transfer is required to confirm your booking before coming.</p>
-        <p><strong>Direct Bank Transfer Details:</strong></p>
-        <ul>
-            <li><strong>Account Holder:</strong> Julienne Aimee</li>
-            <li><strong>Bank:</strong> FNB</li>
-            <li><strong>Account Number:</strong> 63156087223</li>
-        </ul>
-        <p>Please respect our schedule and arrive 5 minutes early prior to your scheduled time (e.g., if booked for 12:00, please arrive by 11:55).</p>
-        <p>In the event that you are running late or need to cancel, please notify us in advance via WhatsApp.</p>
+<!-- BOOKING -->
+
+<section class="section-padding" id="booking">
+
+    <div class="section-header">
+
+        <span class="section-subtitle">
+            Reservations
+        </span>
+
+        <h2 class="section-title">
+            Book Your Session
+        </h2>
+
     </div>
+
 
     <div class="booking-container">
-        <form id="whatsappForm" onsubmit="sendBooking(event)">
+
+        <form
+            class="booking-form"
+            id="bookingForm"
+        >
+
             <div class="form-group">
-                <label for="clientName">Your Full Name</label>
-                <input type="text" id="clientName" required placeholder="Enter your first and last name">
+
+                <label for="fullName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    class="form-control"
+                    placeholder="e.g. Sarah Johnson"
+                    required
+                >
+
             </div>
+
+
             <div class="form-group">
-                <label for="bookingDate">Select Appointment Date</label>
-                <input type="date" id="bookingDate" required>
+
+                <label for="phone">
+                    Phone / WhatsApp Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    class="form-control"
+                    placeholder="e.g. 076 433 9823"
+                    required
+                >
+
             </div>
+
+
             <div class="form-group">
-                <label for="bookingTime">Select Preferred Time</label>
-                <input type="time" id="bookingTime" required>
+
+                <label for="serviceCategory">
+                    Select Service
+                </label>
+
+                <select
+                    id="serviceCategory"
+                    class="form-control"
+                    onchange="calculatePrice()"
+                    required
+                >
+
+                    <option
+                        value=""
+                        disabled
+                        selected
+                    >
+                        -- Choose Service --
+                    </option>
+
+
+                    <optgroup label="Plain">
+
+                        <option value="150">
+                            Plain - Short (R150)
+                        </option>
+
+                        <option value="180">
+                            Plain - Medium (R180)
+                        </option>
+
+                        <option value="220">
+                            Plain - Long (R220)
+                        </option>
+
+                    </optgroup>
+
+
+                    <optgroup label="Decorated">
+
+                        <option value="170">
+                            Decorated - Short (R170)
+                        </option>
+
+                        <option value="220">
+                            Decorated - Medium (R220)
+                        </option>
+
+                        <option value="270">
+                            Decorated - Long (R270)
+                        </option>
+
+                        <option value="320">
+                            Decorated - X-Long (R320)
+                        </option>
+
+                    </optgroup>
+
+
+                    <optgroup label="Toes / Pedicure">
+
+                        <option value="100">
+                            Toes - Plain Acrylic (R100)
+                        </option>
+
+                        <option value="120">
+                            Toes - Decorated (R120)
+                        </option>
+
+                    </optgroup>
+
+
+                    <optgroup label="Maintenance">
+
+                        <option value="150">
+                            Refill (R150)
+                        </option>
+
+                        <option value="80">
+                            Buff & Shine (R80)
+                        </option>
+
+                        <option value="60">
+                            Soak - Off (R60)
+                        </option>
+
+                    </optgroup>
+
+                </select>
+
             </div>
+
+
             <div class="form-group">
-                <label>Select Services</label>
-                <div class="services-checkboxes">
-                    <div class="service-row-item">
-                        <div class="checkbox-wrapper">
-                            <label for="srv_nails">Bespoke Services</label>
-                            <input type="checkbox" id="srv_nails" value="Nail Art" onchange="calculateTotal()">
-                        </div>
-                        <select id="nail_style" class="form-group service-select" onchange="calculateTotal()">
-                            <option value="200">Gel plain (R200)</option>
-                            <option value="250">Gel with design (R250)</option>
-                            <option value="230">Acrylic plain (R230)</option>
-                            <option value="250_french">Acrylic with design french (R250)</option>
-                            <option value="280">Acrylic extra design (R280)</option>
-                            <option value="300_long">Acrylic long (R300)</option>
-                            <option value="250_ombre">Ombre short (R250)</option>
-                            <option value="300_ombre">Ombre long (R300)</option>
-                            <option value="300_stiletto">Stiletto (R300)</option>
-                            <option value="350">Stiletto with design (R350)</option>
-                            <option value="150">Pedicure gel (R150)</option>
-                            <option value="200_pedi">Pedicure gel with design (R200)</option>
-                            <option value="250_lashes">Eyelashes (R250)</option>
-                        </select>
-                    </div>
+
+                <label for="appointmentType">
+                    Location Type
+                </label>
+
+                <select
+                    id="appointmentType"
+                    class="form-control"
+                    onchange="calculatePrice()"
+                    required
+                >
+
+                    <option value="Studio Appointment">
+                        Studio Visit — No Extra Fee
+                    </option>
+
+                    <option value="House Call">
+                        House Call — +R150
+                    </option>
+
+                </select>
+
+
+                <div
+                    class="booking-house-call-notice"
+                    id="houseCallNotice"
+                >
+
+                    <i class="fa-solid fa-circle-exclamation"></i>
+
+                    <strong>
+                        NB: House calls have an additional R150 call-out fee.
+                        This R150 is added to the price of the service selected.
+                    </strong>
+
                 </div>
+
             </div>
-            <div class="price-summary" id="priceDisplay">
-                Estimated Total: R0
+
+
+            <div class="form-group">
+
+                <label for="date">
+                    Preferred Date
+                </label>
+
+                <input
+                    type="date"
+                    id="date"
+                    class="form-control"
+                    required
+                >
+
             </div>
-            <button type="submit" class="btn">Confirm via WhatsApp</button>
+
+
+            <div class="form-group">
+
+                <label for="time">
+                    Preferred Time
+                </label>
+
+                <input
+                    type="time"
+                    id="time"
+                    class="form-control"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group full-width">
+
+                <div class="price-estimate-box">
+
+                    <div class="price-breakdown">
+
+                        <div class="price-line">
+
+                            <span>
+                                Service Price
+                            </span>
+
+                            <strong id="servicePrice">
+                                R0
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            class="price-line house-call-line"
+                            id="houseCallFeeLine"
+                            style="display:none;"
+                        >
+
+                            <span>
+                                House Call Fee
+                            </span>
+
+                            <strong>
+                                + R150
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="price-total-line">
+
+                        <span class="price-estimate-label">
+                            Estimated Total:
+                        </span>
+
+                        <span
+                            class="price-estimate-amount"
+                            id="totalPrice"
+                        >
+                            R0
+                        </span>
+
+                    </div>
+
+
+                    <div class="fee-note">
+                        House call fee is added to the selected service price.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group full-width">
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                    style="width:100%; justify-content:center;"
+                >
+
+                    Confirm via WhatsApp
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                </button>
+
+            </div>
+
         </form>
+
     </div>
+
 </section>
 
-<section id="contact">
-    <h2>Get In Touch</h2>
-    <div class="contact-container">
-        <div class="contact-box">
-            <p><strong>Address:</strong> 270 Paul Kruger Street, Pretoria Central, 0002, South Africa</p>
-            <p><strong>WhatsApp / Contact:</strong> +27 64 082 1906</p>
-            <p><strong>Weekdays:</strong> Monday to Friday (Available Open Hours)</p>
-            <p><strong>Weekends:</strong> Weekend bookings are by appointment only</p>
-        </div>
-        
-        <div class="map-wrapper">
-            <iframe 
-                src="https://maps.google.com/maps?q=270%20paul%20kruger%20street%20pretoria%20central&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </div>
-    </div>
-</section>
+
+<!-- FOOTER -->
 
 <footer>
-    &copy; 2026 Nail by Miss J. Crafted to Empower Your Elegance.
+
+    <div class="footer-grid">
+
+        <div class="footer-col">
+
+            <div
+                class="logo-title"
+                style="color:#fff; margin-bottom:0.5rem;"
+            >
+                Nails Bliss
+            </div>
+
+            <p style="font-style:italic;">
+                "Look good. Feel good. Do nails."
+            </p>
+
+            <p>
+                Dedicated to delivering quality nail care,
+                custom acrylic designs, and premium beauty services.
+            </p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>
+                Contact Info
+            </h4>
+
+            <div class="footer-contact-item">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <span>
+                    Contact Michelle:
+                    <strong>076 433 9823</strong>
+                </span>
+
+            </div>
+
+
+            <div class="footer-contact-item">
+
+                <i class="fa-solid fa-house-user"></i>
+
+                <span>
+                    House Calls Available
+                </span>
+
+            </div>
+
+
+            <div class="footer-contact-item">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <span>
+                    House Call Fee:
+                    <strong>+R150</strong>
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>
+                Connect With Us
+            </h4>
+
+            <p>
+                Follow us to see our daily designs
+                and latest nail art creations.
+            </p>
+
+
+            <div class="social-links">
+
+                <a
+                    href="https://wa.me/27764339823"
+                    class="social-icon"
+                    target="_blank"
+                >
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="social-icon"
+                >
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="social-icon"
+                >
+
+                    <i class="fa-brands fa-facebook-f"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            &copy; 2026 Nails Bliss by Michelle.
+            All Rights Reserved.
+        </p>
+
+    </div>
+
 </footer>
 
+
+<!-- LIGHTBOX -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+>
+
+    <span
+        class="lightbox-close"
+        onclick="closeLightbox()"
+    >
+        &times;
+    </span>
+
+    <img
+        id="lightboxImg"
+        src=""
+        alt="Zoomed View"
+    >
+
+</div>
+
+
 <script>
-    function toggleMenu() {
-        const toggle = document.getElementById('menuToggle');
-        const menu = document.getElementById('navMenu');
-        toggle.classList.toggle('open');
-        menu.classList.toggle('mobile-open');
-    }
-    function closeMenu() {
-        document.getElementById('menuToggle').classList.remove('open');
-        document.getElementById('navMenu').classList.remove('mobile-open');
-    }
-    function openLightbox(imgElement) {
-        const modal = document.getElementById('imageLightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        lightboxImg.src = imgElement.src;
-        modal.classList.add('show');
-    }
-    function closeLightbox(event) {
-        if (event.target.id === 'imageLightbox' || event.target.className === 'lightbox-close') {
-            document.getElementById('imageLightbox').classList.remove('show');
+
+    /* MOBILE MENU */
+
+    const mobileMenuBtn =
+        document.getElementById('mobileMenuBtn');
+
+    const navLinks =
+        document.getElementById('navLinks');
+
+
+    mobileMenuBtn.addEventListener('click', () => {
+
+        navLinks.classList.toggle('active');
+
+    });
+
+
+    document
+        .querySelectorAll('.nav-links a')
+        .forEach(link => {
+
+            link.addEventListener('click', () => {
+
+                navLinks.classList.remove('active');
+
+            });
+
+        });
+
+
+    /* NAVBAR SCROLL */
+
+    window.addEventListener('scroll', () => {
+
+        const navbar =
+            document.getElementById('navbar');
+
+        if (window.scrollY > 50) {
+
+            navbar.classList.add('scrolled');
+
+        } else {
+
+            navbar.classList.remove('scrolled');
+
         }
-    }
-    function calculateTotal() {
-        let total = 0;
-        const nailChecked = document.getElementById('srv_nails').checked;
-        
-        if (nailChecked) {
-            const styleVal = document.getElementById('nail_style').value;
-            const numVal = parseInt(styleVal);
-            if (!isNaN(numVal)) {
-                total = numVal;
-            }
+
+    });
+
+
+    /* PRICE CALCULATION */
+
+    function calculatePrice() {
+
+        const serviceSelect =
+            document.getElementById('serviceCategory');
+
+        const appointmentType =
+            document.getElementById('appointmentType');
+
+        const servicePriceElement =
+            document.getElementById('servicePrice');
+
+        const totalPriceElement =
+            document.getElementById('totalPrice');
+
+        const houseCallFeeLine =
+            document.getElementById('houseCallFeeLine');
+
+        const houseCallNotice =
+            document.getElementById('houseCallNotice');
+
+
+        const servicePrice =
+            Number(serviceSelect.value) || 0;
+
+
+        let houseCallFee = 0;
+
+
+        if (
+            appointmentType.value === 'House Call'
+        ) {
+
+            houseCallFee = 150;
+
+            houseCallFeeLine.style.display = 'flex';
+
+            houseCallNotice.classList.add('active');
+
+        } else {
+
+            houseCallFee = 0;
+
+            houseCallFeeLine.style.display = 'none';
+
+            houseCallNotice.classList.remove('active');
+
         }
-        
-        document.getElementById('priceDisplay').innerText = `Estimated Total: R${total}`;
-    }
-    function sendBooking(e) {
-        e.preventDefault();
-        const name = document.getElementById('clientName').value;
-        const date = document.getElementById('bookingDate').value;
-        const time = document.getElementById('bookingTime').value;
-        
-        const nailChecked = document.getElementById('srv_nails').checked;
-        let selectedStyle = "None selected";
-        let calculatedPrice = "R0";
-        if (nailChecked) {
-            const styleSelect = document.getElementById('nail_style');
-            selectedStyle = styleSelect.options[styleSelect.selectedIndex].text;
-            const numVal = parseInt(styleSelect.value);
-            calculatedPrice = isNaN(numVal) ? "R0" : `R${numVal}`;
-        }
-        
-        const message = `Hello Miss J, I'd like to book an appointment.\n\n` +
-                        `Name: ${name}\n` +
-                        `Date: ${date}\n` +
-                        `Time: ${time}\n` +
-                        `Style: ${selectedStyle}\n` +
-                        `Price: ${calculatedPrice}`;
-                        
-        window.open(`https://wa.me/27640821906?text=${encodeURIComponent(message)}`, '_blank');
+
+
+        const total =
+            servicePrice + houseCallFee;
+
+
+        servicePriceElement.innerText =
+            `R${servicePrice}`;
+
+        totalPriceElement.innerText =
+            `R${total}`;
+
     }
 
-    document.querySelectorAll('.marquee-container').forEach(container => {
-        const track = container.querySelector('.marquee-track');
-        if (track) {
-            track.innerHTML += track.innerHTML;
-        }
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        container.addEventListener('mousedown', (e) => {
-            isDown = true;
-            container.classList.add('dragging');
-            startX = e.pageX - container.offsetLeft;
-            scrollLeft = container.scrollLeft;
+
+    /* GALLERY FILTER */
+
+    const filterBtns =
+        document.querySelectorAll('.filter-btn');
+
+    const galleryItems =
+        document.querySelectorAll('.gallery-item');
+
+
+    filterBtns.forEach(btn => {
+
+        btn.addEventListener('click', () => {
+
+            filterBtns.forEach(b =>
+                b.classList.remove('active')
+            );
+
+            btn.classList.add('active');
+
+
+            const filter =
+                btn.getAttribute('data-filter');
+
+
+            galleryItems.forEach(item => {
+
+                if (
+                    filter === 'all' ||
+                    item.getAttribute('data-category') === filter
+                ) {
+
+                    item.style.display = 'block';
+
+                } else {
+
+                    item.style.display = 'none';
+
+                }
+
+            });
+
         });
-        container.addEventListener('mouseleave', () => {
-            isDown = false;
-            container.classList.remove('dragging');
-        });
-        container.addEventListener('mouseup', () => {
-            isDown = false;
-            container.classList.remove('dragging');
-        });
-        container.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - container.offsetLeft;
-            const walk = (x - startX) * 2;
-            container.scrollLeft = scrollLeft - walk;
-        });
+
     });
+
+
+    /* LIGHTBOX */
+
+    function openLightbox(src) {
+
+        const lightbox =
+            document.getElementById('lightbox');
+
+        const lightboxImg =
+            document.getElementById('lightboxImg');
+
+
+        lightboxImg.src = src;
+
+        lightbox.classList.add('active');
+
+    }
+
+
+    function closeLightbox() {
+
+        document
+            .getElementById('lightbox')
+            .classList.remove('active');
+
+    }
+
+
+    document
+        .getElementById('lightbox')
+        .addEventListener('click', function(e) {
+
+            if (e.target === this) {
+
+                closeLightbox();
+
+            }
+
+        });
+
+
+    /* WHATSAPP BOOKING */
+
+    document
+        .getElementById('bookingForm')
+        .addEventListener('submit', function(e) {
+
+            e.preventDefault();
+
+
+            const name =
+                document.getElementById('fullName').value;
+
+            const phone =
+                document.getElementById('phone').value;
+
+
+            const serviceSelect =
+                document.getElementById('serviceCategory');
+
+
+            const serviceName =
+                serviceSelect.options[
+                    serviceSelect.selectedIndex
+                ].text;
+
+
+            const servicePrice =
+                Number(serviceSelect.value) || 0;
+
+
+            const type =
+                document.getElementById('appointmentType').value;
+
+
+            const date =
+                document.getElementById('date').value;
+
+
+            const time =
+                document.getElementById('time').value;
+
+
+            const houseCallFee =
+                type === 'House Call' ? 150 : 0;
+
+
+            const total =
+                servicePrice + houseCallFee;
+
+
+            let message =
+                `Hello Michelle! I would like to book an appointment with Nails Bliss:\n\n`;
+
+
+            message +=
+                `*Name:* ${name}\n`;
+
+            message +=
+                `*Phone:* ${phone}\n`;
+
+            message +=
+                `*Service:* ${serviceName}\n`;
+
+            message +=
+                `*Service Price:* R${servicePrice}\n`;
+
+            message +=
+                `*Location:* ${type}\n`;
+
+
+            if (type === 'House Call') {
+
+                message +=
+                    `*House Call Fee:* R150\n`;
+
+                message +=
+                    `*Total:* R${total}\n`;
+
+            } else {
+
+                message +=
+                    `*Total:* R${total}\n`;
+
+            }
+
+
+            message +=
+                `*Date:* ${date}\n`;
+
+            message +=
+                `*Time:* ${time}`;
+
+
+            const whatsappURL =
+                `https://wa.me/27764339823?text=${encodeURIComponent(message)}`;
+
+
+            window.open(
+                whatsappURL,
+                '_blank'
+            );
+
+        });
+
+
+    /* MINIMUM BOOKING DATE */
+
+    const dateInput =
+        document.getElementById('date');
+
+
+    const today =
+        new Date();
+
+
+    const year =
+        today.getFullYear();
+
+
+    const month =
+        String(
+            today.getMonth() + 1
+        ).padStart(2, '0');
+
+
+    const day =
+        String(
+            today.getDate()
+        ).padStart(2, '0');
+
+
+    dateInput.min =
+        `${year}-${month}-${day}`;
+
 </script>
+
 </body>
 </html>
