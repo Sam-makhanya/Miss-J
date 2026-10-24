@@ -4,6 +4,35 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Nail by Miss J | Luxury Beauty Studio</title> 
+    <meta name="description" content="Nail by Miss J – luxury nail studio in Pretoria Central. Gel, acrylic, French tips, stiletto, ombre nails, pedicure gel and eyelash extensions. Book via WhatsApp.">
+    <meta name="keywords" content="nails Pretoria, nail salon Pretoria Central, acrylic nails, gel nails, French tips, stiletto nails, ombre nails, pedicure gel, eyelash extensions, Nail by Miss J">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Nail by Miss J | Luxury Beauty Studio">
+    <meta property="og:description" content="Gel, acrylic, French tips, stiletto nails, pedicure gel and eyelashes in Pretoria Central. Book via WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="58.jpeg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NailSalon",
+      "name": "Nail by Miss J",
+      "image": "58.jpeg",
+      "telephone": "+27640821906",
+      "priceRange": "R150 - R350",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "270 Paul Kruger Street",
+        "addressLocality": "Pretoria Central",
+        "addressRegion": "Gauteng",
+        "postalCode": "0002",
+        "addressCountry": "ZA"
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"]
+      }]
+    }
+    </script>
     <style> 
         /* Modern Reset & Luxury Typography */ 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
@@ -13,7 +42,7 @@
         nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; position: relative; }
         nav h1 { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; color: #1a1a1a; text-transform: uppercase; }
         ul { display: flex; flex-direction: column; gap: 10px; list-style: none; position: absolute; top: 60px; left: -20px; right: -20px; background-color: #ffffff; padding: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.15); box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s ease-in-out; }
-        ul.mobile-open { max-height: 300px; opacity: 1; }
+        ul.mobile-open { max-height: 360px; opacity: 1; }
         a { color: #555; text-decoration: none; font-size: 0.95rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s ease; display: block; padding: 10px 0; }
         a:hover { color: #d4af37; }
         .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 25px; height: 18px; background: transparent; border: none; cursor: pointer; z-index: 1001; }
@@ -83,6 +112,23 @@
         .map-wrapper { width: 100%; max-width: 480px; height: 320px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
         .map-wrapper iframe { width: 100%; height: 100%; border: 0; }
         footer { background: #1a1a1a; padding: 30px; text-align: center; color: #a0a0a0; font-size: 12px; letter-spacing: 1px; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+        .search-wrap { max-width: 650px; margin: 0 auto; padding: 0 8% 20px 8%; position: relative; }
+        .search-box { display: flex; align-items: center; background: #ffffff; border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+        .search-box svg { width: 20px; height: 20px; margin: 0 6px 0 16px; flex-shrink: 0; stroke: #d4af37; }
+        .search-box input { flex: 1; border: none; outline: none; padding: 16px 12px; font-size: 15px; background: transparent; color: #2c2c2c; min-width: 0; }
+        .search-box input::-webkit-search-cancel-button { -webkit-appearance: none; display: none; }
+        .search-clear { background: none; border: none; font-size: 22px; color: #999; cursor: pointer; padding: 0 16px; display: none; }
+        .search-results { list-style: none; position: static; display: none; flex-direction: column; gap: 0; max-height: none; opacity: 1; overflow: visible; background: #ffffff; border: 1px solid rgba(212, 175, 55, 0.25); border-top: none; padding: 0; text-align: left; box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+        .search-results.show { display: flex; }
+        .search-results li { padding: 14px 18px; border-bottom: 1px solid rgba(0,0,0,0.05); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .search-results li:last-child { border-bottom: none; }
+        .search-results li:hover, .search-results li.active { background: #f4eae1; }
+        .search-results .r-name { color: #1a1a1a; font-size: 15px; }
+        .search-results .r-tag { color: #d4af37; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+        .search-results .r-empty { cursor: default; color: #777; font-size: 14px; }
+        .search-results .r-empty:hover { background: none; }
+        @keyframes flashGold { 0%,100% { box-shadow: 0 15px 40px rgba(0,0,0,0.03); } 50% { box-shadow: 0 0 0 4px rgba(212,175,55,0.5); } }
+        .flash { animation: flashGold 1.2s ease 2; }
         @media(min-width: 768px) {
             header { padding: 20px 8%; }
             .menu-toggle { display: none; }
@@ -118,6 +164,7 @@
             <li><a href="#about" onclick="closeMenu()">About</a></li>
             <li><a href="#services" onclick="closeMenu()">Services</a></li>
             <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+            <li><a href="#search" onclick="closeMenu(); setTimeout(()=>document.getElementById('siteSearch').focus(),400)">Search</a></li>
             <li><a href="#booking" onclick="closeMenu()">Book Now</a></li>
             <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
         </ul>
@@ -131,6 +178,15 @@
         <a href="#booking" class="btn">Book Appointment</a>
     </div>
 </section>
+
+<div class="search-wrap" id="search">
+    <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="siteSearch" placeholder="Search styles, prices or info (e.g. stiletto, lashes, deposit)" autocomplete="off" aria-label="Search the website">
+        <button class="search-clear" id="searchClear" aria-label="Clear search">&times;</button>
+    </div>
+    <ul class="search-results" id="searchResults"></ul>
+</div>
 
 <section id="about">
     <h2>About Our Studio</h2>
@@ -226,6 +282,26 @@
             <img src="55.jpeg" alt="French Tips Style 55" onclick="openLightbox(this)">
             <img src="56.jpeg" alt="French Tips Style 56" onclick="openLightbox(this)">
             <img src="57.jpeg" alt="French Tips Style 57" onclick="openLightbox(this)">
+        </div>
+    </div>
+
+    <h3 class="gallery-category-title">Latest Designs</h3>
+    <div class="marquee-container">
+        <div class="marquee-track dynamic-marquee">
+            <img src="58.jpeg" alt="Latest Design 58" onclick="openLightbox(this)">
+            <img src="59.jpeg" alt="Latest Design 59" onclick="openLightbox(this)">
+            <img src="60.jpeg" alt="Latest Design 60" onclick="openLightbox(this)">
+            <img src="61.jpeg" alt="Latest Design 61" onclick="openLightbox(this)">
+            <img src="62.jpeg" alt="Latest Design 62" onclick="openLightbox(this)">
+            <img src="63.jpeg" alt="Latest Design 63" onclick="openLightbox(this)">
+            <img src="64.jpeg" alt="Latest Design 64" onclick="openLightbox(this)">
+            <img src="65.jpeg" alt="Latest Design 65" onclick="openLightbox(this)">
+            <img src="66.jpeg" alt="Latest Design 66" onclick="openLightbox(this)">
+            <img src="67.jpeg" alt="Latest Design 67" onclick="openLightbox(this)">
+            <img src="68.jpeg" alt="Latest Design 68" onclick="openLightbox(this)">
+            <img src="69.jpeg" alt="Latest Design 69" onclick="openLightbox(this)">
+            <img src="70.jpeg" alt="Latest Design 70" onclick="openLightbox(this)">
+            <img src="71.jpeg" alt="Latest Design 71" onclick="openLightbox(this)">
         </div>
     </div>
 
@@ -430,6 +506,81 @@
             container.scrollLeft = scrollLeft - walk;
         });
     });
+
+    // ---------- Site search ----------
+    const searchIndex = [
+        { name: 'Address & directions', tag: 'Contact', target: '#contact', keys: 'address location where directions map pretoria paul kruger street central find' },
+        { name: 'WhatsApp / phone number', tag: 'Contact', target: '#contact', keys: 'whatsapp phone number call contact message cell' },
+        { name: 'Opening hours', tag: 'Contact', target: '#contact', keys: 'hours open time weekdays weekend saturday sunday monday friday when' },
+        { name: 'Booking deposit (R100) & bank details', tag: 'Policy', target: '#booking', keys: 'deposit pay payment bank fnb account transfer eft r100 policy confirm' },
+        { name: 'Late arrival & cancellation policy', tag: 'Policy', target: '#booking', keys: 'late cancel cancellation reschedule policy arrive early rules' },
+        { name: 'French tips gallery', tag: 'Gallery', target: '#gallery', keys: 'french tips gallery photos pictures designs' },
+        { name: 'Latest designs gallery', tag: 'Gallery', target: '#gallery', keys: 'latest new designs gallery photos pictures rhinestones gems cherry flowers' },
+        { name: 'Training & mentoring', tag: 'About', target: '#about', keys: 'training course class learn tutor instructor mentor teach about' }
+    ];
+    document.querySelectorAll('#nail_style option').forEach((opt, i) => {
+        searchIndex.push({ name: opt.text, tag: 'Book', option: i, keys: opt.text.toLowerCase() + ' nails nail price cost how much' +
+            (/lash/i.test(opt.text) ? ' lashes eyelash extensions' : '') + (/pedi/i.test(opt.text) ? ' toes feet pedicure' : '') });
+    });
+
+    const searchInput = document.getElementById('siteSearch');
+    const resultsBox = document.getElementById('searchResults');
+    const clearBtn = document.getElementById('searchClear');
+    let currentResults = [], activeIdx = -1;
+
+    function runSearch() {
+        const q = searchInput.value.trim().toLowerCase();
+        clearBtn.style.display = q ? 'block' : 'none';
+        if (!q) { resultsBox.classList.remove('show'); return; }
+        const words = q.split(/\s+/);
+        currentResults = searchIndex.filter(item => {
+            const hay = (item.name + ' ' + item.keys).toLowerCase();
+            return words.every(w => hay.includes(w));
+        }).slice(0, 8);
+        activeIdx = -1;
+        resultsBox.innerHTML = currentResults.length
+            ? currentResults.map((r, i) => `<li data-i="${i}"><span class="r-name">${r.name}</span><span class="r-tag">${r.tag}</span></li>`).join('')
+            : '<li class="r-empty">No results. Try "gel", "stiletto", "lashes" or "deposit", or WhatsApp us.</li>';
+        resultsBox.classList.add('show');
+    }
+
+    function chooseResult(r) {
+        resultsBox.classList.remove('show');
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        if (r.option !== undefined) {
+            document.getElementById('srv_nails').checked = true;
+            document.getElementById('nail_style').selectedIndex = r.option;
+            calculateTotal();
+            const box = document.querySelector('.booking-container');
+            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            box.classList.remove('flash'); void box.offsetWidth; box.classList.add('flash');
+        } else {
+            document.querySelector(r.target).scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    searchInput.addEventListener('input', runSearch);
+    searchInput.addEventListener('keydown', e => {
+        const items = resultsBox.querySelectorAll('li[data-i]');
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            if (!items.length) return;
+            e.preventDefault();
+            activeIdx = (activeIdx + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+            items.forEach((li, i) => li.classList.toggle('active', i === activeIdx));
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (currentResults.length) chooseResult(currentResults[activeIdx >= 0 ? activeIdx : 0]);
+        } else if (e.key === 'Escape') {
+            resultsBox.classList.remove('show');
+        }
+    });
+    resultsBox.addEventListener('click', e => {
+        const li = e.target.closest('li[data-i]');
+        if (li) chooseResult(currentResults[+li.dataset.i]);
+    });
+    clearBtn.addEventListener('click', () => { searchInput.value = ''; runSearch(); searchInput.focus(); });
+    document.addEventListener('click', e => { if (!e.target.closest('#search')) resultsBox.classList.remove('show'); });
 </script>
 </body>
 </html>
